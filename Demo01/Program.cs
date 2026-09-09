@@ -1,4 +1,6 @@
-﻿namespace Demo01
+﻿using System.Text;
+
+namespace Demo01
 {
     internal class Program
     {
@@ -177,6 +179,7 @@
             //Console.WriteLine(x--); // print 11 then decrement x to 10
             //Console.WriteLine(x); // print 10
             #endregion
+
             #region Binary operator
             //int Sum, Mul, Sub, Div, Mod, num1 = 10, num2 = 3;
             //Sum = num1 + num2; //addition
@@ -194,6 +197,232 @@
 
             //double Div2 = (double)num1 / num2;
             //Console.WriteLine(Div2);
+            #endregion
+
+            #region Assignment operator
+            //int X;
+            //X = 5;  // assignment operator
+            //X += 5; // addition assignment operator, equivalent to X = X + 5;
+            //X -= 3; // subtraction assignment operator, equivalent to X = X - 3
+            //X *= 2; // multiplication assignment operator, equivalent to X = X * 2
+            //X /= 4; // division assignment operator, equivalent to X = X / 4
+            //X %= 3; // modulus assignment operator, equivalent to X = X % 3
+            #endregion
+
+            #region Realtional Operator [Comparision]
+            //int X = 10, Y = 20;
+            //Console.WriteLine(X == Y); //equality operator // false
+            //Console.WriteLine(X != Y); //inequality operator // true
+            //Console.WriteLine(X > Y); //greater than operator // false
+            //Console.WriteLine(X < Y); //less than operator // true
+            //Console.WriteLine(X >= Y); //greater than or equal operator // false
+            //Console.WriteLine(X <= Y); //less than or equal operator // true
+            #endregion
+
+            #region Logical Operators
+            //Console.WriteLine(!false); // logical NOT operator, negates the boolean value, Output: True
+
+            ///// logical AND operator (&&) and logical OR operator (||) are short-circuit operators, meaning they only evaluate the second operand if necessary.
+            //Console.WriteLine(false && true); // logical AND operator, returns true if both operands are true, Output: False
+            //Console.WriteLine(true || false); // logical OR operator, returns true if at least one operand is true, Output: True
+
+
+            //Console.WriteLine((4 > 5) && (7 < 9 || 5 == 5)); //false
+            //Console.WriteLine(4 > 5 && 7 < 9 || 5 == 5); //true
+            //Console.WriteLine((4 < 5) && (!(7 < 9) || 5 == 5)); //true
+            #endregion
+
+            #region Bitwise operator
+            //Console.WriteLine(false & true); // bitwise AND operator, returns true if both operands are true, Output: False
+            //Console.WriteLine(true | false); // bitwise OR operator, returns true if at least one operand is true, Output: True
+            //Console.WriteLine(true ^ false); // bitwise XOR operator, returns true if operands are different, Output: True  
+            #endregion
+
+            #region Ternary operator
+            //int X = 4, Y = 7, Z = 10;
+
+            //if (X > Y)
+            //    Console.WriteLine("X is greater than Y");
+            //else
+            //    Console.WriteLine("Y is greater than X");
+
+            //Console.WriteLine(X > Y ? "X is greater than Y" : "Y is greater than X");
+
+            //if (X > Y)
+            //{
+            //    if (X > Z)
+            //    {
+            //        Console.WriteLine("X is the greatest");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Z is the greatest");
+            //    }
+            //}
+            //else
+            //{
+            //    if (Y > Z)
+            //    {
+            //        Console.WriteLine("Y is the greatest");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Z is the greatest");
+            //    }
+            //}
+
+            /////// not recommended to use nested ternary operator for better readability
+            //Console.WriteLine(X > Y ? (X > Z ? "X is the greatest" : "Z is the greatest") : (Y > Z ? "Y is the greatest" : "Z is the greatest"));
+
+            #endregion
+
+            #region Operator Priorty
+            ///1. unary operator 
+            ///2. round brackets ()
+            ///3. multiplicative operator ( * , / , % )
+            ///4. additive operator ( + , - )
+
+            //int a = 20, b = 10, c = 15, d = 5;
+            //int result = (a + b) * c / d; // 20 + 10 = 30 * 15 = 450 / 5 = 90
+            //int result2 = ((--a + b) * c) / d; // 19 + 10 = 29 * 15 = 435 / 5 = 87
+            //int result3 = --a + b * c / d; // 19 + 10 * 15 / 5 = 19 + 150 / 5 = 19 + 30 = 49
+            //int result4 = ++a + a++ - --a - a--; // 21 + 21 - 21 - 21 = 0
+            // ++a => a = 21 , value = 21
+            // a++ => value = 21 , a = 22
+            // --a => a = 21 , value = 21
+            // a-- => value = 21 , a = 20
+            #endregion
+            #endregion
+
+            #region string vs stringbuilder
+            //string x = "hello"; //syntactic sugar for string x = new string("hello");
+            //Console.WriteLine(x.GetHashCode());
+            //x = "world"; //x = new string("world"); // x now refers to a new string object, the old string "Hello" is eligible for garbage collection
+            //Console.WriteLine(x.GetHashCode());
+            ////string => imutable 
+            //x += "!!!"; //x = new string("world!!!"); // x now refers to a new string object, the old string "world" is eligible for garbage collection
+            //Console.WriteLine(x.GetHashCode());
+            ///////////////////////////////////////////////////////////////////////////
+            //StringBuilder y = new StringBuilder("hello");
+            //Console.WriteLine(y.GetHashCode());
+            //y.Append(" world"); // modifies the existing StringBuilder object, no new object is created
+            //Console.WriteLine(y.GetHashCode());
+            //y.Clear(); // clears the content of the StringBuilder object, no new object is created
+            //y.AppendLine("Hello world");// modifies the existing StringBuilder object, no new object is created
+            //y.Insert(0, "welcome to ");// modifies the existing StringBuilder object, no new object is created
+            //y.Remove(0, 11);// modifies the existing StringBuilder object, no new object is created
+            //y.Replace("world", "C#"); // modifies the existing StringBuilder object, no new object is created
+            //Console.WriteLine(y);
+            #endregion
+
+            #region string Formating
+            // Equition : 4 +  2 = 6
+            //int X = 4, Y = 2;
+            //string result = "Equition : " + X + " + " + Y + " = " + (X + Y); // string concatenation
+
+            //string result1 = "Equition : ";
+            //result1 += X;
+            //result1 += " + ";
+            //result1 += Y;
+            //result1 += " = ";
+            //result1 += (X + Y);
+
+            //StringBuilder result2 = new StringBuilder("Equition : ");
+            //result2.Append(X);
+            //result2.Append(" + ");
+            //result2.Append(Y);
+            //result2.Append(" = ");
+            //result2.Append((X + Y));
+
+            //string result3 = string.Format("Equition : {0} + {1} = {2}", X, Y, (X + Y)); // string formatting using placeholders
+
+            //string result4 = $"Equition : {X} + {Y} = {(X + Y)}"; // string interpolation using $ and {} for expressions
+
+            //Console.WriteLine(result);
+            //Console.WriteLine(result1);
+            //Console.WriteLine(result2);
+            //Console.WriteLine(result3);
+            //Console.WriteLine(result4);
+            #endregion
+
+            #region Conditional statment
+            //if (condition) //true or false
+            //{
+            //    // statements to execute if condition is true
+            //}
+            //else if (codition2)
+            //{
+            //    // statements to execute if condition2 is true
+            //}
+            //else
+            //{
+            //    // statements to execute if all condition is false
+            //}
+            ////////////////////////////////
+
+            //if(condition)
+            //{
+
+            //}
+
+            //if(condition2)
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
+
+            #region Ex01 : write a program to take number in first quarter in year and print the month name
+            ///write a program to take number in first quarter in year and print the month name 
+            /// {1 , 2 , 3} => {january , February , March} 
+
+            #region IF Statment
+            #region not clean
+            //Console.WriteLine("insert number of month in first qurter of year :");
+            //int month = int.Parse(Console.ReadLine());
+            //if (int.TryParse(Console.ReadLine(), out int month))
+            //{
+            //    Console.WriteLine(
+            //        month == 1 ? "january" :
+            //        month == 2 ? "February" :
+            //        month == 3 ? "March" :
+            //        "Invalid month number"
+            //        );
+
+            //    if (month == 1)
+            //        Console.WriteLine("january");
+            //    else if (month == 2)
+            //        Console.WriteLine("February");
+            //    else if (month == 3)
+            //        Console.WriteLine("March");
+            //    else
+            //        Console.WriteLine("Invalid month number");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Invalid Input, please enter a valid integer.");
+            //} 
+            #endregion
+
+            //Console.WriteLine("insert number of month in first qurter of year :");
+            //if (!int.TryParse(Console.ReadLine(), out int month))
+            //{
+            //    Console.WriteLine("Invalid Input, please enter a valid integer.");
+            //    return;
+            //}
+
+            //if (month == 1)
+            //    Console.WriteLine("january");
+            //else if (month == 2)
+            //    Console.WriteLine("February");
+            //else if (month == 3)
+            //    Console.WriteLine("March");
+            //else
+            //    Console.WriteLine("Invalid month number");
+
+            #endregion
             #endregion
             #endregion
         }
