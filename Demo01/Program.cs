@@ -374,6 +374,24 @@ namespace Demo01
 
             //}
 
+            //varible = value3;
+            ////jump table
+            //switch(varible)
+            //{
+            //    case value1:
+            //        //excute code
+            //        break;
+            //    case value2:
+            //        //excute code
+            //        break;
+            //    case value3:
+            //        //excute code
+            //        break;
+            //    default:
+            //        //excut if no case match
+            //        break;
+            //}
+
             #region Ex01 : write a program to take number in first quarter in year and print the month name
             ///write a program to take number in first quarter in year and print the month name 
             /// {1 , 2 , 3} => {january , February , March} 
@@ -423,8 +441,110 @@ namespace Demo01
             //    Console.WriteLine("Invalid month number");
 
             #endregion
+
+            #region switch
+            //Console.WriteLine("insert number of month in first qurter of year :");
+            //if (!int.TryParse(Console.ReadLine(), out int month))
+            //{
+            //    Console.WriteLine("Invalid Input, please enter a valid integer.");
+            //    return;
+            //}
+
+            //switch (month)
+            //{
+            //    case 1:
+            //        Console.WriteLine("jan");
+            //        break;
+            //    case 2:
+            //        Console.WriteLine("feb");
+            //        break;
+            //    case 3:
+            //        Console.WriteLine("mar");
+            //        break;
+            //    default:
+            //        Console.WriteLine("Invalid month number");
+            //        break;
+            //}
+
             #endregion
             #endregion
+
+            #region Ex02
+            //int salary = 3000;
+            //switch(salary)
+            //{
+            //    case 3000:
+            //        Console.WriteLine("option3");
+            //        //Console.WriteLine("option2");
+            //        //Console.WriteLine("option1");
+            //        //break;
+            //        goto case 2000;
+            //    case 2000:
+            //        Console.WriteLine("option2");
+            //        //Console.WriteLine("option1");
+            //        //break;
+            //        goto case 1000;
+            //    case 1000:
+            //        Console.WriteLine("option1");
+            //        //break;
+            //        goto case 3000;
+            //    default:
+            //        Console.WriteLine("no option");
+            //        break;
+            //}
+            #endregion
+
+            #region Calculater
+            //take number then opertation then number and show result
+            //calculater do (+ - * / %)
+            //write program to do that and make it protictive
+
+            double result = 0;
+            Console.WriteLine("enter first number");
+            if(!int.TryParse(Console.ReadLine(),out int num01))
+            {
+                Console.WriteLine("invalid input");
+                return;
+            }
+
+            Console.WriteLine("enter operation (+ - * / %)");
+            if (
+                !(char.TryParse(Console.ReadLine(), out char op)
+                &&
+                (op == '+' || op == '-' || op == '*' || op == '/' || op == '%')
+                ))
+            {
+                Console.WriteLine("invalid input");
+                return;
+            }
+
+            Console.WriteLine("enter last number");
+            if (
+                !int.TryParse(Console.ReadLine(), out int num02)
+                ||
+                ((op == '/' || op == '%') && num02 == 0)
+                )
+            {
+                Console.WriteLine("invalid input");
+                return;
+            }
+
+            switch(op)
+            {
+                case '+': result = num01 + num02; break;
+                case '-': result = num01 - num02; break;
+                case '*': result = num01 * num02; break;
+                case '/': result = (double)num01 / num02; break;
+                case '%': result = num01 % num02; break;
+                //default: result = 0; break;
+                    
+            }
+
+            Console.WriteLine($"{num01} {op} {num02} = {result}");
+            #endregion
+            #endregion
+
+
         }
     }
 }
