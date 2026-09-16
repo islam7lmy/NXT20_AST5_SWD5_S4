@@ -499,49 +499,212 @@ namespace Demo01
             //calculater do (+ - * / %)
             //write program to do that and make it protictive
 
-            double result = 0;
-            Console.WriteLine("enter first number");
-            if(!int.TryParse(Console.ReadLine(),out int num01))
-            {
-                Console.WriteLine("invalid input");
-                return;
-            }
+            //double result = 0;
+            //Console.WriteLine("enter first number");
+            //if(!int.TryParse(Console.ReadLine(),out int num01))
+            //{
+            //    Console.WriteLine("invalid input");
+            //    return;
+            //}
 
-            Console.WriteLine("enter operation (+ - * / %)");
-            if (
-                !(char.TryParse(Console.ReadLine(), out char op)
-                &&
-                (op == '+' || op == '-' || op == '*' || op == '/' || op == '%')
-                ))
-            {
-                Console.WriteLine("invalid input");
-                return;
-            }
+            //Console.WriteLine("enter operation (+ - * / %)");
+            //if (
+            //    !(char.TryParse(Console.ReadLine(), out char op)
+            //    &&
+            //    (op == '+' || op == '-' || op == '*' || op == '/' || op == '%')
+            //    ))
+            //{
+            //    Console.WriteLine("invalid input");
+            //    return;
+            //}
 
-            Console.WriteLine("enter last number");
-            if (
-                !int.TryParse(Console.ReadLine(), out int num02)
-                ||
-                ((op == '/' || op == '%') && num02 == 0)
-                )
-            {
-                Console.WriteLine("invalid input");
-                return;
-            }
+            //Console.WriteLine("enter last number");
+            //if (
+            //    !int.TryParse(Console.ReadLine(), out int num02)
+            //    ||
+            //    ((op == '/' || op == '%') && num02 == 0)
+            //    )
+            //{
+            //    Console.WriteLine("invalid input");
+            //    return;
+            //}
 
-            switch(op)
-            {
-                case '+': result = num01 + num02; break;
-                case '-': result = num01 - num02; break;
-                case '*': result = num01 * num02; break;
-                case '/': result = (double)num01 / num02; break;
-                case '%': result = num01 % num02; break;
-                //default: result = 0; break;
-                    
-            }
+            //switch(op)
+            //{
+            //    case '+': result = num01 + num02; break;
+            //    case '-': result = num01 - num02; break;
+            //    case '*': result = num01 * num02; break;
+            //    case '/': result = (double)num01 / num02; break;
+            //    case '%': result = num01 % num02; break;
+            //    //default: result = 0; break;
 
-            Console.WriteLine($"{num01} {op} {num02} = {result}");
+            //}
+
+            //Console.WriteLine($"{num01} {op} {num02} = {result}");
             #endregion
+            #endregion
+
+            #region Loops Statment
+            // 10 steps to print 1 to 10
+            //Console.WriteLine("1");
+            //Console.WriteLine("2");
+            //Console.WriteLine("3");
+            //Console.WriteLine("4");
+            //Console.WriteLine("5");
+            //Console.WriteLine("6");
+            //Console.WriteLine("7");
+            //Console.WriteLine("8");
+            //Console.WriteLine("9");
+            //Console.WriteLine("10");
+
+
+            #region for
+            // start => i = 1
+            // condition => (i <= 10) => true
+            // excute => Console.WriteLine(i);
+            // increment => i++
+            // condition => (i <= 10) => true
+            // excute => Console.WriteLine(i);
+            // increment => i++
+            // condition => (i <= 10) => false
+
+
+            //for (int i = 1; i <= 10; i++) //++i
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+
+            //int x = 10;
+            //++x;
+            //Console.WriteLine(x); // 11
+            //x++;
+            //Console.WriteLine(x);
+
+            //Console.WriteLine(++x); //11
+            //Console.WriteLine(x++); //10
+
+
+            //int i = 1; //start
+            //for(; ;i++)
+            //{
+            //    if (!(i <= 10))
+            //        break; //condition
+
+            //    if (i % 2 == 0)
+            //    {
+            //        //i++;
+            //        continue; //skip current loop
+            //    }
+
+            //    Console.WriteLine(i); //excute
+
+            //    //i++; //increment
+            //}
+            #endregion
+
+            #region while
+            //Console.WriteLine("insert 0 if you want to exit");
+            //string input = Console.ReadLine();
+            //while (input != "0")
+            //{
+            //    Console.WriteLine($"you entered : {input}");
+            //    Console.WriteLine("insert 0 if you want to exit");
+            //    input = Console.ReadLine();
+            //}
+
+            //int num01;
+            //Console.WriteLine("enter first number");
+            //while (!int.TryParse(Console.ReadLine(), out /*int*/ num01))
+            //{
+            //    Console.WriteLine("invalid input, please enter valid integer");
+            //}
+            //num01++;
+            #endregion
+
+            #region do while
+            //Console.WriteLine("insert 0 if you want to exit");
+            //string input = Console.ReadLine();
+            //while (input != "0")
+            //{
+            //    Console.WriteLine($"you entered : {input}");
+            //    Console.WriteLine("insert 0 if you want to exit");
+            //    input = Console.ReadLine();
+            //}
+
+            //string input;
+            //do
+            //{
+            //    Console.WriteLine("insert 0 if you want to exit");
+            //    input = Console.ReadLine();
+            //    Console.WriteLine($"you entered : {input}");
+
+            //} while (input != "0");
+
+            #endregion
+
+            #region foreach
+            //List<string> names = new List<string>()
+            //{
+            //    "ali",
+            //    "ahmed",
+            //    "sara"
+            //};
+
+            //for (int i = 0; i < names.Count; i++)
+            //{
+            //    names[i] = "test";
+            //    Console.WriteLine(names[i]);
+            //}
+
+
+            //foreach(string item in names)
+            //{
+            //    //item = "test";
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
+            //[quiz]rewrite the calculater program using while or do while
+            #endregion
+
+            #region Block scope
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //Console.WriteLine(i); //invalid [out of scope]
+
+            //int z = 0;
+            //for (z = 0; z < 10; z++)
+            //{
+            //    Console.WriteLine(z);
+            //}
+            //Console.WriteLine(z);
+
+            //{
+            //    int z = 0;
+            //}
+
+            //{
+            //    int z = 0;
+            //}
+            //int z = 0;
+            //Console.WriteLine(z);
+            //bool result2 = !int.TryParse(Console.ReadLine(), out int num01);
+            //while (!int.TryParse(Console.ReadLine(),out int num01))
+            //{
+
+            //    num01++;
+            //}
+            //Console.WriteLine(num01);//invalid [out of scope]
+
+            //bool result = !int.TryParse(Console.ReadLine(), out int num02);
+            //if (result)
+            //{
+            //    num02++;
+            //}
+            //Console.WriteLine(num02);
             #endregion
 
 
