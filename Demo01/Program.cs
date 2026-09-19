@@ -666,6 +666,49 @@ namespace Demo01
             #endregion
 
             //[quiz]rewrite the calculater program using while or do while
+
+            //int num01, num02;
+            //char op;
+            //double result = 0;
+
+            //Console.WriteLine("enter first number");
+            //while (!int.TryParse(Console.ReadLine(), out num01))
+            //{
+            //    Console.WriteLine("invalid input");
+            //}
+
+            //Console.WriteLine("enter operation (+ - * / %)");
+            //while (
+            //    !(char.TryParse(Console.ReadLine(), out op)
+            //    &&
+            //    (op == '+' || op == '-' || op == '*' || op == '/' || op == '%')
+            //    ))
+            //{
+            //    Console.WriteLine("invalid input");
+            //}
+
+            //Console.WriteLine("enter last number");
+            //while (
+            //    !int.TryParse(Console.ReadLine(), out num02)
+            //    ||
+            //    ((op == '/' || op == '%') && num02 == 0)
+            //    )
+            //{
+            //    Console.WriteLine("invalid input");
+            //}
+
+            //switch (op)
+            //{
+            //    case '+': result = num01 + num02; break;
+            //    case '-': result = num01 - num02; break;
+            //    case '*': result = num01 * num02; break;
+            //    case '/': result = (double)num01 / num02; break;
+            //    case '%': result = num01 % num02; break;
+            //    //default: result = 0; break;
+
+            //}
+
+            //Console.WriteLine($"{num01} {op} {num02} = {result}");
             #endregion
 
             #region Block scope
@@ -707,6 +750,112 @@ namespace Demo01
             //Console.WriteLine(num02);
             #endregion
 
+            #region Array
+            #region one D array
+            //int[] numbers;
+            ////declare reference from type array of int in stack
+            ////referring to null
+            ////4 byte will be allocated in stack
+            ////zero byte will be allocated in heap
+
+            //numbers = new int[5];
+            ////will allocate the required bytes in heap 20 byte [ 5 elements * 4 byte ]
+            ////initilized with default value of it's data type [0]
+            ////make reference to refer on address of object created in heap =. CLR
+
+
+            //numbers = new int[5] { 1, 2, 3, 4, 5 };
+            //numbers = new int[] { 1, 2, 3, 4, 5 , 6 , 7 };
+            ////numbers = { 1,2,3,4,5,6}; //invalid
+            ////int[] numbers02 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            //Console.WriteLine(numbers.Length); //size of array
+
+            //int[] numbers = new int[5];
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    Console.WriteLine($"please enter {i+1} element:");
+            //    while(!int.TryParse(Console.ReadLine(),out numbers[i]))
+            //    {
+            //        Console.WriteLine($"invalid input,please enter a valid integer for {i + 1} element:");
+            //    }
+            //}
+
+            //foreach (int item in numbers)
+            //{
+            //    //int.TryParse(Console.ReadLine(), out item); //invalid
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+            #region two D array [Rectangler]
+            //int[,] Marks;
+            //Marks = new int[2, 4];// { { 1, 2, 3, 4 }, { 1, 2, 3, 4 } };
+            ////int[] Marks = new int[5];
+            //Console.WriteLine($"the size of array = {Marks.Length} , the number of dimensions = {Marks.Rank}");
+            //Console.WriteLine($"numbers of rows = {Marks.GetLength(0)} , numbers of column = {(Marks.Rank > 1 ? Marks.GetLength(1) : "it's one D")}");
+
+            /////read elments of arry from user 
+            /////print elemnts of arry to user
+            /////write program to do that with protictive code and readable messages
+            //for (int i = 0; i < Marks.GetLength(0); i++) // 0  1 => rows
+            //{
+            //    for (int j = 0; j < Marks.GetLength(1); j++) // 0  1  2  3 => column
+            //    {
+            //        Console.WriteLine($"enter [{i} , {j}] element:");
+            //        while (!int.TryParse(Console.ReadLine(),out Marks[i,j]))
+            //        {
+            //            Console.WriteLine($"invalid input, please enter valid integer for [{i} , {j}] element:");
+            //        }
+            //    }
+            //}
+
+            //foreach (int item in Marks)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //[quiz] write same program with only one loop
+
+            #endregion
+            #region Two D [Jaged Array]
+            int[][,] numbers;
+            numbers = new int[3][,];
+
+            numbers[0] = new int[3, 5];
+            numbers[1] = new int[1, 3];
+            numbers[2] = new int[2, 1];
+
+            Console.WriteLine($"the size of array = {numbers.Length} , the number of dimensions = {numbers.Rank}");
+            Console.WriteLine($"numbers of rows = {numbers.GetLength(0)} , numbers of column = {(numbers.Rank > 1 ? numbers.GetLength(1) : "it's one D")}");
+
+            Console.WriteLine($"the size of array = {numbers[0].Length} , the number of dimensions = {numbers[0].Rank}");
+            Console.WriteLine($"numbers of rows = {numbers[0].GetLength(0)} , numbers of column = {(numbers[0].Rank > 1 ? numbers[0].GetLength(1) : "it's one D")}");
+
+            for (int i = 0; i < numbers.Length; i++) //references
+            {
+                for (int j = 0; j < numbers[i].GetLength(0); j++) //=> rows
+                {
+                    for (int k = 0; k < numbers[i].GetLength(1); k++) //=> column
+                    {
+                        Console.WriteLine($"enter element [{i}][{j} , {k}]");
+                        while (!int.TryParse(Console.ReadLine(),out numbers[i][j, k]))
+                        {
+                            Console.WriteLine($"invalid input, please enter a valid integer for element [{i}][{j} , {k}]");
+                        } 
+                    }
+                }
+            }
+
+            foreach (int[,] item in numbers)
+            {
+                foreach (int  inneritem in item)
+                {
+                    Console.WriteLine(inneritem);
+                }
+            }
+
+            #endregion
+            #endregion
 
         }
     }
