@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 
 namespace Demo01
 {
@@ -818,45 +819,190 @@ namespace Demo01
 
             #endregion
             #region Two D [Jaged Array]
-            int[][,] numbers;
-            numbers = new int[3][,];
+            //int[][,] numbers;
+            //numbers = new int[3][,];
 
-            numbers[0] = new int[3, 5];
-            numbers[1] = new int[1, 3];
-            numbers[2] = new int[2, 1];
+            //numbers[0] = new int[3, 5];
+            //numbers[1] = new int[1, 3];
+            //numbers[2] = new int[2, 1];
 
-            Console.WriteLine($"the size of array = {numbers.Length} , the number of dimensions = {numbers.Rank}");
-            Console.WriteLine($"numbers of rows = {numbers.GetLength(0)} , numbers of column = {(numbers.Rank > 1 ? numbers.GetLength(1) : "it's one D")}");
+            //Console.WriteLine($"the size of array = {numbers.Length} , the number of dimensions = {numbers.Rank}");
+            //Console.WriteLine($"numbers of rows = {numbers.GetLength(0)} , numbers of column = {(numbers.Rank > 1 ? numbers.GetLength(1) : "it's one D")}");
 
-            Console.WriteLine($"the size of array = {numbers[0].Length} , the number of dimensions = {numbers[0].Rank}");
-            Console.WriteLine($"numbers of rows = {numbers[0].GetLength(0)} , numbers of column = {(numbers[0].Rank > 1 ? numbers[0].GetLength(1) : "it's one D")}");
+            //Console.WriteLine($"the size of array = {numbers[0].Length} , the number of dimensions = {numbers[0].Rank}");
+            //Console.WriteLine($"numbers of rows = {numbers[0].GetLength(0)} , numbers of column = {(numbers[0].Rank > 1 ? numbers[0].GetLength(1) : "it's one D")}");
 
-            for (int i = 0; i < numbers.Length; i++) //references
-            {
-                for (int j = 0; j < numbers[i].GetLength(0); j++) //=> rows
-                {
-                    for (int k = 0; k < numbers[i].GetLength(1); k++) //=> column
-                    {
-                        Console.WriteLine($"enter element [{i}][{j} , {k}]");
-                        while (!int.TryParse(Console.ReadLine(),out numbers[i][j, k]))
-                        {
-                            Console.WriteLine($"invalid input, please enter a valid integer for element [{i}][{j} , {k}]");
-                        } 
-                    }
-                }
-            }
+            //for (int i = 0; i < numbers.Length; i++) //references
+            //{
+            //    for (int j = 0; j < numbers[i].GetLength(0); j++) //=> rows
+            //    {
+            //        for (int k = 0; k < numbers[i].GetLength(1); k++) //=> column
+            //        {
+            //            Console.WriteLine($"enter element [{i}][{j} , {k}]");
+            //            while (!int.TryParse(Console.ReadLine(),out numbers[i][j, k]))
+            //            {
+            //                Console.WriteLine($"invalid input, please enter a valid integer for element [{i}][{j} , {k}]");
+            //            } 
+            //        }
+            //    }
+            //}
 
-            foreach (int[,] item in numbers)
-            {
-                foreach (int  inneritem in item)
-                {
-                    Console.WriteLine(inneritem);
-                }
-            }
+            //foreach (int[,] item in numbers)
+            //{
+            //    foreach (int  inneritem in item)
+            //    {
+            //        Console.WriteLine(inneritem);
+            //    }
+            //}
 
             #endregion
+            #region Array Methods
+            //int[] numbers = { 8, 3, 4, 5, 6, 7, 9, 7, 1, 3, 8 };
+
+            #region 1. class member method
+            //Array.Sort(numbers);
+            //Array.Reverse(numbers);
+            //Array.Clear(numbers);
+            //Console.WriteLine(Array.IndexOf(numbers, 7)); //5
+            //Console.WriteLine(Array.LastIndexOf(numbers, 7)); //7
+            #endregion
+
+            #region 1. object member method
+            //int[] newarr = new int[7];
+            //numbers.CopyTo(newarr, 3);  //un safe
+
+            //int[] dest = new int[numbers.Length + 3];
+            //numbers.CopyTo(dest, 3);
+
+            //var dest01 = Array.CreateInstance(numbers.GetType().GetElementType(), numbers.Length + 3);
+            //numbers.CopyTo(dest01, 3);
+            //Console.WriteLine(numbers.GetType()); //double[]
+            #endregion
+            //foreach (var i in dest01)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            #endregion
+
+            ///Ex01: write a program find the longest distance between 
+            ///Two equal cells.
+            ///In this example.The distance is 
+            ///measured by the number Of cells- for example
+
+
+            //int[] numbers = new int[11] { 10, 2, 3, 4, 5, 6, 2, 7, 8, 9, 10 };
+            //int MaxDistance = -1;
+            //int Maxvalue = 0;
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    int firstindex = Array.IndexOf(numbers, numbers[i]); // 0
+            //    int lastindex = Array.LastIndexOf(numbers, numbers[i]); // 9
+            //    int distance = lastindex - firstindex - 1;
+            //    if(distance > MaxDistance)
+            //    {
+            //        MaxDistance = distance;
+            //        Maxvalue = numbers[i];
+            //    }
+            //}
+
+            //foreach (int i in numbers)
+            //{
+            //    int firstindex = Array.IndexOf(numbers, i); // 0
+            //    int lastindex = Array.LastIndexOf(numbers, i); // 9
+            //    int distance = lastindex - firstindex - 1;
+            //    if (distance > MaxDistance)
+            //    {
+            //        MaxDistance = distance;
+            //        Maxvalue = i;
+            //    }
+            //}
+
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    for (int j = i + 1; j < numbers.Length; j++)
+            //    {
+            //        if (numbers[i] == numbers[j])
+            //        {
+            //            int distance = j - i - 1;
+
+            //            if (distance > MaxDistance)
+            //            {
+            //                MaxDistance = distance;
+            //                Maxvalue = numbers[i];
+            //            }
+            //        }
+            //    }
+            //}
+
+            // Console.WriteLine($"Value : {Maxvalue} , has distance : {MaxDistance}");
+
+
+            #endregion
+
+            #region Boxing vs UnBoxing
+            //int x = 10; //value type
+            //object obj = x;
+            //x = 20;
+            //Console.WriteLine(obj); //20
+
+            //print(10); //boxing => value type to reference type
+            //print("test"); //not boxing
+            //print('&');
+            //print(true);
+
+            //int x = 10, y = 20;
+            //x.Equals(y);
+
+            //object[] data = new object[3];
+            //data[0] = 10; //boxing
+            //data[1] = 3200.50m; //boxing
+            //data[2] = "ali"; //not boxing
+
+
+            //ArrayList list = new ArrayList();
+            //list.Add(10);
+            //list.Add("test");
+            //list.Add(true);
+
+            //int x =(int) list[0];
+
+            //unboxing
+            //object obj = 10; //boxing
+            //double x =(double) obj; //child = parent; => explict casting //unboxing
+
+            //animal = dog;  => parent = child;
+            //animal = cat;
+            //dog = (dog) animal;   => child =(child) parent;
+
+            //int xx = 10;
+            //double yy = xx;
+
+            //Console.WriteLine(x);
+
+
+            //List<int> list = new List<int>();
+            ////list.Add("test"); //invalid
+            //list.Add(1);
+
+            //int x = list[0];
+            #endregion
+
+            #region nullable type
+            #endregion
+
+            #region null opreators
+
+            #endregion
+
+            #region function
+
             #endregion
 
         }
+
+        //static void print(object o)
+        //{
+        //    Console.WriteLine(o);
+        //}
     }
 }
