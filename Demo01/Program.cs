@@ -988,14 +988,108 @@ namespace Demo01
             #endregion
 
             #region nullable type
+            #region vlue type
+            //int age;
+            //age = 0;
+            //age = null;
+
+            //int? age01 = null; // nullable type => value + null
+            //age01 = 0;
+            //age01 = 10;
+
+            //int x = 8;
+            //int? y = x;
+            //y = null;
+            ////x = (int) y; //explict casting => unsafe casting
+
+            //if (y is not null)
+            //    x = (int)y;
+
+            //if (y.HasValue)
+            //    x = y.Value;
+
+            //x = y.HasValue ? y.Value : 0;
+
+            //x = y ?? 0; //null colascing operator
+            #endregion
+            #region reference type
+            /// alert 
+            //string st_fname = null; //warning
+            //string? st_lname = null;
+
+            //Point pt = default!; // => null forgiven
+            //pt = new Point();
+            //pt = null;
+            #endregion
             #endregion
 
             #region null opreators
+            //int x = default; //0
+            //int[] arr = default; //null
 
+            //int length = arr.Length; //run time error
+
+            //int length;
+            //if (arr is not null)
+            //    length = arr.Length;
+
+
+            //if (arr is not null)
+            //{
+            //    for (int i = 0; i < arr.Length; i++)
+            //    {
+
+            //    }
+            //}
+
+            ////logical and => short circut 
+            //for (int i = 0;arr is not null && i < arr.Length; i++)
+            //{
+
+            //}
+
+            //bitwise and => long circut
+            //for (int i = 0; arr is not null & i < arr.Length; i++)
+            //{
+
+            //}
+
+            //int? length01 = arr?.Length; //null propgation => if arr is null will return null
+
+            //int length02 = arr?.Length is not null ? arr.Length : 0 ;
+            //int length0 = arr?.Length ?? 0 ; //null colascing
+
+            //employees emp = default;
+            ////emp = new employees();
+            ////emp.department = new departments();
+            ////Console.WriteLine(emp.department.name);
+            //Console.WriteLine(emp?.department?.name ?? "N/A");
             #endregion
 
             #region function
+            #region Prototype and calling
+            //int x = 10 + Sumreturn(10, 20);
+            //Sumwithoutreturn(10, 20);
 
+            //calling object memeber method
+            //Program p1 = new Program();
+            //p1.PrintLine();
+
+            //string x = "test";
+            //x.GetHashCode();
+
+            //Array.CreateInstance();
+
+            //Program.PrintLine();
+
+            //PrintLine();
+
+            //PrintLine(20, "$"); // passing by postion
+            //PrintLine(pattern: "$", number: 20); // passing by name
+            //PrintLine(20);
+            //PrintLine(pattern: "$");
+            //PrintLine(); 
+            #endregion
             #endregion
 
         }
@@ -1004,5 +1098,110 @@ namespace Demo01
         //{
         //    Console.WriteLine(o);
         //}
+
+        #region function [methods]
+
+        #region Prototype and calling
+        #region return vs without return
+        //static int Sumreturn(int num1, int num2) // return
+        //{
+        //    return num1 + num2;
+        //}
+
+        //static void Sumwithoutreturn(int num1, int num2) //not return
+        //{
+        //    Console.WriteLine(num1 + num2);
+        //} 
+        #endregion
+        #region class memeber vs object memeber
+        //print line of 10 element of "#"
+        //output=> ##########
+
+
+        ////object memeber method
+        ///// <summary>
+        ///// object memeber method to print line of 10 element of "#"
+        ///// </summary>
+        //public void PrintLine()
+        //{
+        //    for (int i = 1; i <= 10; i++)
+        //    {
+        //        Console.Write("#");
+        //    }
+        //    Console.WriteLine();
+        //}
+
+        ////class memeber method
+        ///// <summary>
+        ///// class memeber method to print line of 10 element of "#"
+        ///// </summary>
+        ////public static void PrintLine()
+        ////{
+        ////    for (int i = 1; i <= 10; i++)
+        ////    {
+        ////        Console.Write("#");
+        ////    }
+        ////    Console.WriteLine();
+        ////}
+        #endregion
+        #region Parameters
+        //print line of number inserted by user and pattern inserted by user
+
+        /// <summary>
+        /// Writes a line to the console consisting of a repeated pattern string.
+        /// </summary>
+        /// <remarks>If number is zero, only a line break is written. The method does not append any
+        /// separator between repetitions of the pattern.</remarks>
+        /// <param name="number">The number of times to repeat the pattern. Must be zero or greater.</param>
+        /// <param name="pattern">The string to repeat in the output line. If empty, no characters are written for each repetition.</param>
+        //static void PrintLine(int number,string pattern)
+        //{
+        //    for (int i = 1; i <= number; i++)
+        //    {
+        //        Console.Write(pattern);
+        //    }
+        //    Console.WriteLine();
+        //}
+        //static void PrintLine(int number = 10, string pattern = "#")
+        //{
+        //    for (int i = 1; i <= number; i++)
+        //    {
+        //        Console.Write(pattern);
+        //    }
+        //    Console.WriteLine();
+        //}
+        #endregion 
+        #endregion
+
+        #endregion
     }
+
+    #region Null Operators
+    //class employees
+    //{
+    //    public string name;
+    //    public departments department;
+    //}
+
+    //class departments
+    //{
+    //    public int id;
+    //    public string name;
+    //} 
+    #endregion
+
+    #region Function
+    //class test
+    //{
+    //    void main()
+    //    {
+    //        Program.PrintLine();
+
+    //        //PrintLine(); //invalid
+
+    //        //Program p1 = new Program();
+    //        //p1.PrintLine();
+    //    }
+    //}
+    #endregion
 }
