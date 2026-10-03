@@ -1090,17 +1090,75 @@ namespace Demo01
             //PrintLine(pattern: "$");
             //PrintLine(); 
             #endregion
+
+            #region Value Type
+            //class memeber method function take two numbers and swap them
+            //int x = 10, y = 20; //value type
+            //Console.WriteLine($"befor swap: x = {x} , y : {y}");
+            ////Swap(x, y);
+            //SwapByRef(ref x,ref y);
+            //Console.WriteLine($"after swap: x = {x} , y : {y}");
+            #endregion
+
+            #region reference type
+            ////write class memeber method take arr of int one diminssion and return sum of array element
+            //int[] numarr = { 3, 5, 6 };
+            //Console.WriteLine(numarr.GetHashCode());
+            //SumArrayByValue(numarr);
+            ////Console.WriteLine(numarr[0]); // 99
+            //Console.WriteLine(numarr.GetHashCode());
+
+
+            //Console.WriteLine("***************** Passing By Ref *****************");
+            //numarr[0] = 3;
+            //Console.WriteLine(numarr.GetHashCode());
+            //SumArrayByRef(ref numarr);
+            ////Console.WriteLine(numarr[0]); // 99
+            //Console.WriteLine(numarr.GetHashCode());
+
+            //Point p1 = new Point();
+            //p1.X = 1;
+            //p1.Y = 2;
+            //assignpointbyvalue(p1);
+            //Console.WriteLine(p1.X); // 1
+
+
+            //assignpointbyref(ref p1);
+            //Console.WriteLine(p1.X); // 10
+            #endregion
+
+            #region passing by out
+            ////write class memeber method to take two integer numbers and return sum and mul
+            //int x = 10, y = 20, sum = 0, mul = 0;
+
+            ////result res = sumandmul(x, y);
+            ////Console.WriteLine($"sum : {res.sum}, mul : {res.mul}");
+
+            //sumandmulbyRef(x, y, ref sum, ref mul); //must assign variables before calling
+            //Console.WriteLine($"sum : {sum}, mul : {mul}");
+
+            //sumandmulbyOut(x, y, out sum, out mul); //no need to assign variables befroe calling
+            //Console.WriteLine($"sum : {sum}, mul : {mul}");
+            #endregion
+
+            #region Params
+            //int[] newarr = { 1, 2, 3, 4, 5 };
+            //SumArray(newarr);
+
+            //SumArray(1, 2, 3, 4, 5, 7, 7, 22);
+
+            #endregion
             #endregion
 
         }
 
+
+
+        #region function [methods]
         //static void print(object o)
         //{
         //    Console.WriteLine(o);
         //}
-
-        #region function [methods]
-
         #region Prototype and calling
         #region return vs without return
         //static int Sumreturn(int num1, int num2) // return
@@ -1170,9 +1228,104 @@ namespace Demo01
         //    }
         //    Console.WriteLine();
         //}
-        #endregion 
+        #endregion
         #endregion
 
+        #region Value Type
+        static void Swap(int num01, int num02)
+        {
+            Console.WriteLine($"inner method => befor swap: x = {num01} , y : {num02}");
+            int temp = num01;
+            num01 = num02;
+            num02 = temp;
+            Console.WriteLine($"inner method => after swap: x = {num01} , y : {num02}");
+        }
+
+        static void SwapByRef(ref int num01, ref int num02)
+        {
+            Console.WriteLine($"inner method => befor swap: x = {num01} , y : {num02}");
+            int temp = num01;
+            num01 = num02;
+            num02 = temp;
+            Console.WriteLine($"inner method => after swap: x = {num01} , y : {num02}");
+        }
+        #endregion
+
+        #region reference type
+        static int SumArrayByValue(int[] arr)
+        {
+            int sum = 0;
+            arr = new int[] { 1, 2, 3 };
+            foreach (int item in arr)
+            {
+                sum += item;
+            }
+            arr[0] = 99;
+            return sum;
+        }
+
+        static int SumArrayByRef(ref int[] arr)
+        {
+            int sum = 0;
+            arr = new int[] { 1, 2, 3 };
+            foreach (int item in arr)
+            {
+                sum += item;
+            }
+            arr[0] = 99;
+            return sum;
+        }
+
+        static void assignpointbyvalue(Point p)
+        {
+            p = new Point();
+            p.X = 10;
+            p.Y = 20;
+        }
+
+        static void assignpointbyref(ref Point p)
+        {
+            p = new Point();
+            p.X = 10;
+            p.Y = 20;
+        }
+        #endregion
+
+        #region Passing by out
+        //static result sumandmul(int num01, int num02)
+        //{
+        //    result res = new result();
+        //    res.sum = num01 + num02;
+        //    res.mul = num01 * num02;
+        //    return res;
+        //}
+
+        static void sumandmulbyRef(int num01, int num02, ref int sum, ref int mul)
+        {
+            //no need to assigned sum , mul
+            sum = num01 + num02;
+            mul = num01 * num02;
+        }
+
+        static void sumandmulbyOut(int num01, int num02, out int sum, out int mul)
+        {
+            //must assinged out parameters
+            sum = num01 + num02;
+            mul = num01 * num02;
+        }
+        #endregion
+
+        #region Params
+        static int SumArray(int sum01,params int[] arr)
+        {
+            int sum = 0;
+            foreach (int item in arr)
+            {
+                sum += item;
+            }
+            return sum;
+        }
+        #endregion
         #endregion
     }
 
@@ -1203,5 +1356,13 @@ namespace Demo01
     //        //p1.PrintLine();
     //    }
     //}
+
+    //class result
+    //{
+    //    public int sum;
+    //    public int mul;
+    //}
     #endregion
+
+
 }
