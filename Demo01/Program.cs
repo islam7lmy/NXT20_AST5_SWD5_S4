@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Text;
+//using FirstCode;
 
 namespace Demo01
 {
@@ -1150,9 +1151,70 @@ namespace Demo01
             #endregion
             #endregion
 
+            #region Exception Handling
+            //try
+            //{
+            //    Helper.DoSomeCode();
+            //}
+            //catch (Exception ex)
+            //{
+            //    //log file
+            //    throw ex;
+            //    //Console.WriteLine(ex.Message);
+            //}
+            //finally 
+            //{
+            //    //[release || deallocate || delete || close] => unmanaged  resources [database connaction , Files]
+            //    Console.WriteLine("finally");
+            //}
+
+            ////Helper.DoSomeCode();
+            //Console.WriteLine("program is still running");
+            #endregion
+
+            #region Enums [labels => refer to numeric]
+            #region Ex01
+            //WeekDays day0 = new WeekDays();
+            ////day.dayofweek = "sat";
+            //day0.dayofweek = Days.sat;
+
+            //WeekDays day1 = new WeekDays();
+            ////day.dayofweek = "saturday";
+            //day1.dayofweek = Days.sat;
+
+            //WeekDays day2 = new WeekDays();
+            ////day.dayofweek = "satur";
+            //day2.dayofweek = Days.sat;
+
+            //Days day = Days.mon;
+            //Console.WriteLine(day); //day.tostring() => label (mon)
+            //Console.WriteLine((int)day); // 2
+
+            //Daysss day01 = Daysss.mon;
+            //Console.WriteLine(day01); //day.tostring() => label (mon)
+            //Console.WriteLine((int)day01); // 2000 
+            #endregion
+            #region Ex 02
+            //Console.WriteLine((int)Gender.Male);
+            //Console.WriteLine((int)Gender.male);
+            //Console.WriteLine((int)Gender.m);
+            //Console.WriteLine((int)Gender.M);
+            //while (true)
+            //{
+            //    //Gender g = Console.ReadLine();
+            //    if (Enum.TryParse(Console.ReadLine(), true,out Gender g) && Enum.IsDefined(typeof(Gender), g))
+            //    {
+            //        Console.WriteLine(g);
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("invalid");
+            //    }
+            //}
+            #endregion
+            #endregion
+
         }
-
-
 
         #region function [methods]
         //static void print(object o)
@@ -1316,7 +1378,7 @@ namespace Demo01
         #endregion
 
         #region Params
-        static int SumArray(int sum01,params int[] arr)
+        static int SumArray(int sum01, params int[] arr)
         {
             int sum = 0;
             foreach (int item in arr)
@@ -1326,6 +1388,76 @@ namespace Demo01
             return sum;
         }
         #endregion
+        #endregion
+
+        #region Exception Handling
+        static void DoSomeCode()
+        {
+            try
+            {
+                int x, y, z;
+
+                Console.WriteLine("please enter first number:");
+
+                x = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("please enter last number:");
+
+                y = int.Parse(Console.ReadLine());
+
+                z = x / y;
+
+                Console.WriteLine($"result is : {z}");
+
+                int[] arr = { 1, 2, 3 };
+
+                Console.WriteLine("please enter index number that you want to change it's value");
+
+                int index = int.Parse(Console.ReadLine());
+
+                arr[index] = 99;
+
+                Console.WriteLine(arr[index]);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        static void DoSomeProtictiveCode()
+        {
+            int x, y, z;
+
+            do
+            {
+                Console.WriteLine("please enter first number:");
+                //x = int.Parse(Console.ReadLine());
+            } while (!int.TryParse(Console.ReadLine(), out x));
+
+            do
+            {
+                Console.WriteLine("please enter last number:");
+                //y = int.Parse(Console.ReadLine());
+            } while (!int.TryParse(Console.ReadLine(), out y) || y == 0);
+
+            z = x / y;
+
+            Console.WriteLine($"result is : {z}");
+
+            int[] arr = { 1, 2, 3 };
+
+            int index;
+            do
+            {
+                Console.WriteLine("please enter index number that you want to change it's value");
+            } while (!int.TryParse(Console.ReadLine(), out index) || index < 0 || index >= arr.Length);
+
+            arr[index] = 99;
+
+            Console.WriteLine(arr[index]);
+        }
         #endregion
     }
 
@@ -1364,5 +1496,93 @@ namespace Demo01
     //}
     #endregion
 
+    #region Enums [labels => refer to numeric]
+    #region Ex 01
+    public class WeekDays
+    {
+        //public string dayofweek;
+        public Days dayofweek;
+    }
+
+    public enum Days
+    {
+        sat,
+        sun,
+        mon,
+        tue,
+        wed,
+        thr,
+        fri
+    }
+
+    public enum Dayss : int
+    {
+        sat = 0,
+        sun = 1,
+        mon = 2,
+        tue = 3,
+        wed = 4,
+        thr = 5,
+        fri = 6
+    }
+
+    public enum Daysss : int
+    {
+        sat = 10,
+        sun = 100,
+        mon = 2000,
+        tue = 30000,
+        wed = 400000,
+        thr = 5000000,
+        fri = 60000000
+    }
+    #endregion
+    #region Ex 02
+    enum Gender
+    {
+        Male = 0,
+        male = 0,
+        m = 0,
+        M = 0,
+        Female = 1,
+        female = 1,
+        f = 1,
+        F = 1
+    }
+    #endregion
+    #region Ex 03
+    enum Branches : byte // 0 => 255
+    {
+        smartyvally = 105,
+        Madi, //106
+        _6OCT = 252,
+        Mansoura, //253
+        Asyut,
+        Banha = 255,
+        //Cairo  //256 => not valid [is too large to fit it's datatype]
+    }
+    #endregion
+    #region Ex => Quiz
+    ///class member method take taxrate and servicerate and all ordered items 
+    ///print the shape as bellow:
+    /// order details :
+    /// pizza : 120
+    /// juice : 60
+    /// ـــــــــــــــــــ
+    /// total item : 180
+    /// tax : (total item * (tax / 100))
+    /// service : (total item * (service  / 100))
+    /// ـــــــــــــــــــ
+    /// total oreder : total + tax + service
+
+
+    /// Menu items is:
+    /// Pizaa = 120,
+    /// Burger = 150,
+    /// Juice = 40,
+    /// Salad = 30,
+    /// Dessert = 60
+    #endregion
+    #endregion
 
 }
