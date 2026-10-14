@@ -1212,6 +1212,89 @@ namespace Demo01
             //    }
             //}
             #endregion
+            #region Ex => Quiz
+            //CalacBill(14, 12, MenuItems.Burger, MenuItems.Salad, MenuItems.Juice);
+            #endregion
+            #region Permission 
+            //users u01 = new users()
+            //{
+            //    Id = 1,
+            //    Name = "Ahmed",
+            //    Myp = (PermissionItems)3
+            //    //write = false,
+            //    //read = true,
+            //    //update = false,
+            //    //delete = false,
+            //    //execute = true,
+            //    //select = true,
+            //};
+
+            //PermissionItems MyP = PermissionItems.write;
+            //Console.WriteLine(MyP);
+            //Console.WriteLine((byte)MyP);
+
+            //MyP = (PermissionItems)3;
+            //Console.WriteLine(MyP);
+
+            //MyP = (PermissionItems)241;
+            //Console.WriteLine(MyP);
+
+            //if i want to add permission , Do what ??
+            //add read permission to MyP
+            //MyP = (PermissionItems)((byte)MyP + (byte)PermissionItems.read);
+            //Console.WriteLine(MyP);
+            //MyP = MyP | PermissionItems.read;
+            //MyP = MyP | PermissionItems.write;
+            //Console.WriteLine(MyP);
+
+
+            ////////If You Want To remove if exists or Add Permission if not exists, Do XOR Operation
+            //MyP = MyP ^ PermissionItems.read;
+            //Console.WriteLine(MyP); //write , read because => read not exists
+
+            //MyP = MyP ^ PermissionItems.read;
+            //Console.WriteLine(MyP); //write because => read is exists
+
+            //////// If You Want To Remove (Deny) Permission, Do What ??
+            //MyP = MyP | PermissionItems.read;
+
+            ////i want to remove write
+            //MyP = MyP & (~PermissionItems.write);
+            //Console.WriteLine(MyP);
+
+            ////// Check Read Permission is existed inside MyP
+            //if ((MyP & PermissionItems.read) == PermissionItems.read)
+            //    Console.WriteLine("Allowed");
+            //else
+            //    Console.WriteLine("Denied");
+
+            //MyP |= PermissionItems.read;  //=> MyP = MyP | PermissionItems.read;
+
+
+            //if ((MyP & PermissionItems.read) == PermissionItems.read)
+            //    Console.WriteLine("Allowed");
+            //else
+            //    Console.WriteLine("Denied");
+            #endregion
+
+            #region quiz
+            //////write 3 class memeber methos
+            PermissionItems MyP = PermissionItems.write;
+            /////function to add permissions => current permission , permissions to add
+            AddPermission(ref MyP, PermissionItems.read, PermissionItems.update);
+            Console.WriteLine(MyP);
+            /////function to remove permissions => current permission , permissions to remove
+            RemovePermission(ref MyP, PermissionItems.read, PermissionItems.update);
+            Console.WriteLine(MyP);
+            ////////function to check if permission exists return true else return false => current permission , permission to Check
+            
+            if (CheckPermission(MyP , PermissionItems.read))
+                Console.WriteLine("Allowed");
+            else
+                Console.WriteLine("Denied");
+
+            #endregion
+
             #endregion
 
         }
@@ -1459,6 +1542,63 @@ namespace Demo01
             Console.WriteLine(arr[index]);
         }
         #endregion
+
+        #region Enum 
+        #region Ex => Quiz
+        ///class member method take taxrate and servicerate and all ordered items 
+        ///print the shape as bellow:
+        /// order details :
+        /// pizza : 120
+        /// juice : 60
+        /// ـــــــــــــــــــ
+        /// total item : 180
+        /// tax : (total item * (tax / 100))
+        /// service : (total item * (service  / 100))
+        /// ـــــــــــــــــــ
+        /// total oreder : total + tax + service
+
+        //static void CalacBill(int taxrate,int servicerate,params MenuItems[] Order)
+        //{
+        //    decimal Total = 0;
+        //    Console.WriteLine("order details :");
+        //    foreach (MenuItems item in Order)
+        //    {
+        //        Console.WriteLine($"{item} : {(int)item}");
+        //        Total += (int)item;
+        //    }
+        //    Console.WriteLine("----------------------");
+        //    Console.WriteLine($"total item : {Total}");
+        //    decimal tax = Total * (taxrate / 100.00m);
+        //    Console.WriteLine($"tax : {tax}");
+        //    decimal service = Total * (servicerate / 100.00m);
+        //    Console.WriteLine($"service : {service}");
+        //    Console.WriteLine("----------------------");
+        //    Console.WriteLine($"total oreder : {Total + tax + service}");
+        //}
+        #endregion
+        #region Quiz
+        static void AddPermission(ref PermissionItems Currnt, params PermissionItems[] PermissionsToAdd)
+        {
+            foreach (PermissionItems item in PermissionsToAdd)
+            {
+                Currnt |= item;
+            }
+        }
+
+        static void RemovePermission(ref PermissionItems Currnt, params PermissionItems[] PermissionsToRemove)
+        {
+            foreach (PermissionItems item in PermissionsToRemove)
+            {
+                Currnt &= ~item;
+            }
+        }
+
+        static bool CheckPermission(PermissionItems Currnt, PermissionItems PermissionsToCheck)
+        {
+            return (Currnt & PermissionsToCheck) == PermissionsToCheck;
+        }
+        #endregion
+        #endregion
     }
 
     #region Null Operators
@@ -1582,6 +1722,45 @@ namespace Demo01
     /// Juice = 40,
     /// Salad = 30,
     /// Dessert = 60
+
+    //enum MenuItems 
+    //{
+    //    Pizaa = 120,
+    //    Burger = 150,
+    //    Juice = 40,
+    //    Salad = 30,
+    //    Dessert = 60
+    //}
+    #endregion
+
+    #region Permission [not done yet]
+    class users
+    {
+        public int Id;
+        public string Name;
+        public PermissionItems Myp;
+
+        //public bool write; //true => has permission || false => dont have permission
+        //public bool read; //true => has permission || false => dont have permission
+        //public bool update; //true => has permission || false => dont have permission
+        //public bool delete; //true => has permission || false => dont have permission
+        //public bool execute; //true => has permission || false => dont have permission
+        //public bool select; //true => has permission || false => dont have permission
+    }
+
+    [Flags]  //data annotation (decrator) => learn new behavior
+    enum PermissionItems : byte //short //byte  // 0 - 255 
+    {
+        write = 1,
+        read = 2,
+        update = 4,
+        delete = 8,
+        execute = 16,
+        select = 32,
+        //select2 = 64,
+        //select3 = 128,
+        //select4 = 256
+    }
     #endregion
     #endregion
 
