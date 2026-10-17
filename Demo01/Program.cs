@@ -1276,25 +1276,23 @@ namespace Demo01
             //else
             //    Console.WriteLine("Denied");
             #endregion
-
             #region quiz
-            //////write 3 class memeber methos
-            PermissionItems MyP = PermissionItems.write;
-            /////function to add permissions => current permission , permissions to add
-            AddPermission(ref MyP, PermissionItems.read, PermissionItems.update);
-            Console.WriteLine(MyP);
-            /////function to remove permissions => current permission , permissions to remove
-            RemovePermission(ref MyP, PermissionItems.read, PermissionItems.update);
-            Console.WriteLine(MyP);
-            ////////function to check if permission exists return true else return false => current permission , permission to Check
+            ////////write 3 class memeber methos
+            //PermissionItems MyP = PermissionItems.write;
+            ///////function to add permissions => current permission , permissions to add
+            //AddPermission(ref MyP, PermissionItems.read, PermissionItems.update);
+            //Console.WriteLine(MyP);
+            ///////function to remove permissions => current permission , permissions to remove
+            //RemovePermission(ref MyP, PermissionItems.read, PermissionItems.update);
+            //Console.WriteLine(MyP);
+            //////////function to check if permission exists return true else return false => current permission , permission to Check
             
-            if (CheckPermission(MyP , PermissionItems.read))
-                Console.WriteLine("Allowed");
-            else
-                Console.WriteLine("Denied");
+            //if (CheckPermission(MyP , PermissionItems.read))
+            //    Console.WriteLine("Allowed");
+            //else
+            //    Console.WriteLine("Denied");
 
             #endregion
-
             #endregion
 
         }
@@ -1747,7 +1745,6 @@ namespace Demo01
         //public bool execute; //true => has permission || false => dont have permission
         //public bool select; //true => has permission || false => dont have permission
     }
-
     [Flags]  //data annotation (decrator) => learn new behavior
     enum PermissionItems : byte //short //byte  // 0 - 255 
     {
