@@ -28,12 +28,11 @@ namespace OOP
         /// that  will initialize the fields with default values
         /// you can't create user-defined parameterless constructor
         /// inside struct (Except c# 10.0)
-        public Point()
-        {
-            //X = default;
-            //Y = default;
-                
-        }
+        //public Point()
+        //{
+        //    //X = default;
+        //    //Y = default;
+        //}
 
         public Point(int X , int Y)
         {
