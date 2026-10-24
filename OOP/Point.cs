@@ -30,8 +30,8 @@ namespace OOP
         /// inside struct (Except c# 10.0)
         //public Point()
         //{
-        //    //X = default;
-        //    //Y = default;
+        //    X = default;
+        //    Y = default;
         //}
 
         public Point(int X , int Y)

@@ -1,5 +1,6 @@
 ﻿using FirstCode;
 using Commen;
+using OOP.PolyMorphism_Overriding;
 using Commen01;
 using OOP.Inhertiance;
 
@@ -170,7 +171,227 @@ namespace OOP
 
 
             #endregion
+            #region Class vs Struct
+            //Car c1 = new Car();
+            //Car c2 = c1; // Shallow copy => copy just reference 
+            //c2.Id = 99;
+            //Console.WriteLine(c1.Id);// 99 because c1 and c2 refer to the same object in heab
+
+            ///not valid
+            //Car c;
+            //c.Id = 10;
+            //c.Speed = 320;
+            //c.Model = "BMW";
+
+            ///reference type => stored reference in stack and object in heap
+            ///instiliztion => must call constructor
+            ///clr will always generate empty parameterless constructor ,if no user-defined constructor exists 
+            ///clr will no longer generate empty parameterless constructor, if u write user-defined constructor
+            ///empty parameterless constructor => do nothing 
+            ///Supports inheritance => [all access modifers]
+            ///used for complex objects and behaviors
+
+            //Point p1 = new Point();
+            //Point p2 = p1;// deep copy => p2 is a copy of p1 but refer to different memory address
+            //p2.X = 10;
+            //p2.Y = 20;
+            //p2.X = 99;
+            //Console.WriteLine(p1.X); //0
+
+            //Point p;
+            //p.X = 10;
+            //p.Y = 20;
+            //Console.WriteLine(p1.X);
+            ///value type => srtored in stack
+            ///instiliztion => mustnot call constructor
+            ///clr will always Generate Parameterless Constructor
+            ///default constructor => initialize the attributes of struct with their default values
+            ///Cannot inherit from another struct =>  [private, internal, public]
+            ///often used for small and simple data => recomanded 16 bytes or less
+
+
+            //PhoneBook book = new PhoneBook();
+            //book.AddContact("ahmed", "0123456789");
+            //book.AddContact("ali", "0123456788");
+            //book.AddContact("omr", "0123456787");
+            ////for (int i = 0; i < book.Count; i++)
+            ////{
+            ////    Console.WriteLine(book[i]);
+            ////}
+
+            //PhoneBook Book1 = book;
+            //Book1["ahmed"] = "0000000000";
+
+            ////Book1 = new PhoneBook();
+            //Book1.Names = new string[10];
+            //Book1.Numbers = new string[10];
+
+            //Console.WriteLine(book["ahmed"]);
+            //Console.WriteLine(Book1["ahmed"]);
+
+
+            #endregion
+            #endregion
+
+            #region PolyMorphism
+            #region 1. OverLoading
+            //int num1 = 10, num2 = 20;
+            //Sum(num1, num2);
+
+            //double num03 = 15.5, num04 = 10.25;
+            //Sum(num03, num04);
+
+            //int x = 10;
+            //x.ToString()
+            #endregion
+            #region 2. Overriding
+            //PolyMorphism_Overriding.TypeA typeA = new PolyMorphism_Overriding.TypeA(10);
+            //typeA.MyFun01();
+            //typeA.MyFun02();
+
+            //PolyMorphism_Overriding.TypeB typeB = new PolyMorphism_Overriding.TypeB(10, 20);
+            //typeB.MyFun01();
+            //typeB.MyFun02();
+            #endregion
+            #endregion
+
+            #region Binding
+            //PolyMorphism_Overriding.TypeA typeA;
+            /////// allocate 4 byte for reference from type employee in stack refer to null
+
+            //typeA = new PolyMorphism_Overriding.TypeA(10);
+            ///// allocate object in heap
+            #region What is binding
+            ///// reference from base type => object from derived type
+            //PolyMorphism_Overriding.Employee emp01;
+            //emp01 = new FullTimeEmployee();
+
+            //emp01.Id = 10;
+            //emp01.Name = "Ahmed";
+            //emp01.Age = 30;
+            ////emp01.Salary = 10;//not valid
+
+            //emp01.ShowRole(); // hidding => static => will run ralted to reference 
+            //emp01.PrintDetials(); // overriding => dynamic => will run ralted to object 
+            #endregion
+
+            #region Not Binding
+            //FullTimeEmployee emp = (FullTimeEmployee)new PolyMorphism_Overriding.Employee();
+
+            //int x = 10;
+            //object obj = x;
+            //obj = "test";
+            //x = (int)obj;
+
+            /////animal = dog
+            /////animal = cat
+            /////dog =(dog) animal
+            #endregion
+
+            #region why Binding
+            FullTimeEmployee fullTime = new FullTimeEmployee();
+            PartTimeEmployee partTime = new PartTimeEmployee();
+            FreeLanceEmployee freeLance = new FreeLanceEmployee();
+            DayFullTimeEmployee dayFullTimeEmployee = new DayFullTimeEmployee();
+            NightFullTimeEmployee nightFullTimeEmployee = new NightFullTimeEmployee();
+
+            ProcessEmployee(fullTime);
+            ProcessEmployee(partTime);
+            ProcessEmployee(freeLance);
+            ProcessEmployee(dayFullTimeEmployee);
+            ProcessEmployee(nightFullTimeEmployee);
+            #endregion
+
             #endregion
         }
+
+        #region PolyMorphism OverLoading
+        /// 1. datatype of parameters
+        /// 2. Count number of parameters
+        /// 3. reOrder parameters if not same datatype
+        //public static int Sum(int a, int b)
+        //{
+        //    return a + b;
+        //}
+        ////public static int Sum(int b, int a)
+        ////{
+        ////    return a + b;
+        ////}
+        //public static int Sum(int a, int b, int z)
+        //{
+        //    return a + b + z;
+        //}
+        //public static double Sum(double a, double b)
+        //{
+        //    return a + b;
+        //}
+        //public static decimal Sum(decimal a, double b)
+        //{
+        //    return (a + (decimal)b);
+        //}
+        //public static decimal Sum(double b, decimal a)
+        //{
+        //    return (a + (decimal)b);
+        //}
+
+        //public static void CalcBill(params menuitem[] order)
+        //{
+
+        //}
+
+        //public static void CalcBill(decimal serviceRate,params menuitem[] order)
+        //{
+
+        //}
+
+        //public static void CalcBill(decimal TaxRate,decimal serviceRate, params menuitem[] order)
+        //{
+
+        //}
+
+        //public static void CalcBill(decimal Discount,decimal TaxRate, decimal serviceRate, params menuitem[] order)
+        //{
+
+        //}
+
+        //enum menuitem { }
+        #endregion
+        #region Binding
+        public static void ProcessEmployee(PolyMorphism_Overriding.Employee emp)
+        {
+            if (emp is not null)
+            {
+                emp.ShowRole();
+                emp.PrintDetials();
+            }
+        }
+
+        //public static void ProcessEmployee(FullTimeEmployee emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.ShowRole();
+        //        emp.PrintDetials();
+        //    }
+        //}
+        //public static void ProcessEmployee(PartTimeEmployee emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.ShowRole();
+        //        emp.PrintDetials();
+        //    }
+        //}
+        //public static void ProcessEmployee(FreeLanceEmployee emp)
+        //{
+        //    if (emp is not null)
+        //    {
+        //        emp.ShowRole();
+        //        emp.PrintDetials();
+        //    }
+        //}
+        #endregion
     }
+
+
 }
