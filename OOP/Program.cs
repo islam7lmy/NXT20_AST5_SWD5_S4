@@ -3,6 +3,7 @@ using Commen;
 using OOP.PolyMorphism_Overriding;
 using Commen01;
 using OOP.Inhertiance;
+using OOP.Interfaces;
 
 namespace OOP
 {
@@ -279,8 +280,12 @@ namespace OOP
             //FullTimeEmployee emp = (FullTimeEmployee)new PolyMorphism_Overriding.Employee();
 
             //int x = 10;
-            //object obj = x;
-            //obj = "test";
+            //object obj = x; //boxing 
+            //obj = "test"; //object => string => binding
+
+            //string yy = obj; ///not binding
+
+
             //x = (int)obj;
 
             /////animal = dog
@@ -289,19 +294,89 @@ namespace OOP
             #endregion
 
             #region why Binding
-            FullTimeEmployee fullTime = new FullTimeEmployee();
-            PartTimeEmployee partTime = new PartTimeEmployee();
-            FreeLanceEmployee freeLance = new FreeLanceEmployee();
-            DayFullTimeEmployee dayFullTimeEmployee = new DayFullTimeEmployee();
-            NightFullTimeEmployee nightFullTimeEmployee = new NightFullTimeEmployee();
+            //FullTimeEmployee fullTime = new FullTimeEmployee();
+            //PartTimeEmployee partTime = new PartTimeEmployee();
+            //FreeLanceEmployee freeLance = new FreeLanceEmployee();
+            //DayFullTimeEmployee dayFullTimeEmployee = new DayFullTimeEmployee();
+            //NightFullTimeEmployee nightFullTimeEmployee = new NightFullTimeEmployee();
 
-            ProcessEmployee(fullTime);
-            ProcessEmployee(partTime);
-            ProcessEmployee(freeLance);
-            ProcessEmployee(dayFullTimeEmployee);
-            ProcessEmployee(nightFullTimeEmployee);
+            //ProcessEmployee(fullTime);
+            //ProcessEmployee(partTime);
+            //ProcessEmployee(freeLance);
+            //ProcessEmployee(dayFullTimeEmployee);
+            //ProcessEmployee(nightFullTimeEmployee);
             #endregion
 
+            #region  More Practise on Binding
+            //PolyMorphism_Overriding.TypeA typeA = new PolyMorphism_Overriding.TypeC(1, 2, 3);
+            //typeA.A = 11;
+            ////typeA.B = 10;
+            ////typeA.C = 20;
+
+            //typeA.MyFun01(); //TypeA
+            //typeA.MyFun02(); //TypeC
+
+            //PolyMorphism_Overriding.TypeB typeB = new PolyMorphism_Overriding.TypeC(1, 2, 3);
+            //typeB.A = 11;
+            //typeB.B = 10;
+            ////typeA.C = 20;
+
+            //typeB.MyFun01(); //TypeB
+            //typeB.MyFun02(); //TypeC
+
+
+            //PolyMorphism_Overriding.TypeA typeA1 = new TypeE(1, 2, 3, 4, 5);
+            //TypeB typeB1 = new TypeE(1, 2, 3, 4, 5);
+            //PolyMorphism_Overriding.TypeC typeC1 = new TypeE(1, 2, 3, 4, 5);
+            //TypeD typeD1 = new TypeD(1, 2, 3, 4);
+            //TypeD typeD2 = new TypeE(1, 2, 3, 4, 5);
+            //TypeD typeD3 = new TypeF(1, 2, 3, 4, 5);
+
+
+            //typeA1.MyFun02(); //TypeC
+            //typeB1.MyFun02(); //TypeC
+            //typeC1.MyFun02(); //TypeC
+            //typeD1.MyFun02(); //TypeD
+            //typeD2.MyFun02(); //TypeE
+            //typeD3.MyFun02(); //TypeD
+            #endregion
+            #endregion
+
+            #region Interfaces
+            #region Ex01
+            //MyType myType = new MyType();
+            //MyTypev2 myType = new MyTypev2();
+            //IMyType myType = new IMyType(); //not valid => not implmented 
+
+            //IMyType myType = new MyTypev3();
+            ////<IMyType,MyType> ();
+            //myType.Salary = 1000;
+            //myType.MyFun();
+            //myType.Print(); 
+            #endregion
+            #region Ex02
+            //current => 0
+            //getnext => incress current based on series type
+            //reset => current = 0
+
+            ///3 series type => bytwo , bythree , byseven 
+            ///and allow me to add any series type as extended code not refactor
+
+            ///class member method to print specifed number of elements
+            ///of series in one line
+            //SeriesByTwo seriesByTwo = new SeriesByTwo();
+            //PrintSeries(seriesByTwo, 10);
+
+            //SeriesByThree seriesByThree = new SeriesByThree();
+            //PrintSeries(seriesByThree, 20);
+
+            //SeriesByFive seriesByFive = new SeriesByFive();
+            //PrintSeries(seriesByFive, 10);
+
+            //SeriesBySeven seriesBySeven = new SeriesBySeven();
+            //PrintSeries(seriesBySeven, 5);
+
+            #endregion
             #endregion
         }
 
@@ -390,6 +465,21 @@ namespace OOP
         //        emp.PrintDetials();
         //    }
         //}
+        #endregion
+        #region InterFaces
+        public static void PrintSeries(ISeries series, int number)
+        {
+            if (series is not null)
+            {
+                for (int i = 0; i < number; i++)
+                {
+                    Console.Write($"{series.Current} \t");
+                    series.GetNext();
+                }
+                Console.WriteLine();
+                series.Reset();
+            }
+        }
         #endregion
     }
 
