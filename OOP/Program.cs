@@ -376,6 +376,112 @@ namespace OOP
             //SeriesBySeven seriesBySeven = new SeriesBySeven();
             //PrintSeries(seriesBySeven, 5);
 
+            //SeriesByThree seriesByThree = new SeriesByThree();
+            //seriesByThree.Current = 20; //not valid 
+            //seriesByThree.Current = 20; //not valid
+            //seriesByThree.Current = 20; //not valid
+
+            #endregion
+            #region Implment Interface Implicitly Vs Implment Interface Explicitly
+            //Interfaces.IMoveable car = new Interfaces.Car();
+            //car.Speed = 100;
+            //car.Backward();
+            //car.Forward();
+            //car.Left();
+            //car.Right();
+
+            //AirPlan airPlan = new AirPlan();
+            //airPlan.Speed = 300;
+            ////airPlan.Forward(); //not valid
+            //Console.WriteLine("------------AirPlan is move now----------------");
+            //IMoveable moveableairPlan = airPlan;
+            //moveableairPlan.Speed = 100;
+            //moveableairPlan.Forward();
+            //moveableairPlan.Backward();
+            //moveableairPlan.Left();
+            //moveableairPlan.Right();
+            //Console.WriteLine("------------AirPlan is fly now----------------");
+            //IFlyable flyableairPlan = airPlan;
+            //flyableairPlan.Speed = 320;
+            //flyableairPlan.Forward();
+            //flyableairPlan.Left();
+            //flyableairPlan.Right();
+
+            #endregion
+            #region Shallow copy vs Deep Copy
+            //int x = 10;
+            //int y = 20;
+            //y = x;
+            //y = 30;
+            //Console.WriteLine(x);
+            //Console.WriteLine(y);
+
+            //int[] arr01 = { 1, 2, 3 };
+            //int[] arr02 = { 4, 5, 6 };
+            //Console.WriteLine($"arr01 = {arr01.GetHashCode()}");
+            //Console.WriteLine($"arr02 = {arr02.GetHashCode()}");
+
+            #region Shallow copy
+            //arr02 = arr01;
+
+            //Console.WriteLine("after shallow copy");
+            //Console.WriteLine($"arr01 = {arr01.GetHashCode()}");
+            //Console.WriteLine($"arr02 = {arr02.GetHashCode()}");
+
+            //arr02[0] = 99;
+            //Console.WriteLine(arr01[0]);
+            #endregion
+
+            #region Deep copy
+            ////int[] test = (int[]) new object();
+            //arr02 = (int[]) arr01.Clone();
+
+            //Console.WriteLine("after Deep copy");
+            //Console.WriteLine($"arr01 = {arr01.GetHashCode()}");
+            //Console.WriteLine($"arr02 = {arr02.GetHashCode()}");
+
+            //arr02[0] = 99;
+            //Console.WriteLine(arr01[0]);
+            #endregion
+
+            #endregion
+
+            #region Built-In Interface ICloneable
+            Interfaces.Employee emp = new Interfaces.Employee();
+            emp.Id = 10;
+            emp.Name = "Ahmed";
+            emp.Salary = 1000;
+            emp.Address = "cairo";
+
+            Console.WriteLine(emp);
+
+            Interfaces.Employee emp01 = new Interfaces.Employee();
+            emp01.Id = 20;
+            emp01.Name = "ali";
+            emp01.Salary = 1500;
+            emp01.Address = "banha";
+
+            Console.WriteLine(emp01);
+
+
+            Console.WriteLine($"emp : {emp.GetHashCode()}");
+            Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
+
+            ///apply deep copy on employee
+            Console.WriteLine("after deep copy");
+            //emp01 = emp.DeepCopy();
+            //emp01 = new Interfaces.Employee(emp); //copy constructor
+            emp01 = (Interfaces.Employee)emp.Clone();
+
+            DeepCopy(ref emp01, emp);
+
+
+            Console.WriteLine($"emp : {emp.GetHashCode()}");
+            Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
+
+            emp01.Id = 400;
+            Console.WriteLine(emp);
+            Console.WriteLine(emp01);
             #endregion
             #endregion
         }
@@ -479,6 +585,13 @@ namespace OOP
                 Console.WriteLine();
                 series.Reset();
             }
+        }
+
+
+        ///generics
+        public static void DeepCopy<T>(ref T copyin, T copyfrom) where T : ICloneable
+        {
+            copyin = (T)copyfrom.Clone();
         }
         #endregion
     }
