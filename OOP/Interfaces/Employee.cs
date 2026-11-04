@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP.Interfaces
 {
-    internal class Employee : ICloneable
+    internal class Employee : ICloneable, IComparable
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -57,7 +57,7 @@ namespace OOP.Interfaces
 
         public Employee()
         {
-            
+
         }
 
         /// copy constructor => a constructor that takes an object of the same class as a parameter 
@@ -69,5 +69,39 @@ namespace OOP.Interfaces
             Address = emp.Address;
         }
 
+        public Employee(int id, string name, decimal salary, string address)
+        {
+            Id = id;
+            Name = name;
+            Salary = salary;
+            Address = address;
+        }
+
+
+        //+ve => this object is greater than the other object
+        //-ve => this object is less than the other object
+        //0 => this object is equal to the other object
+        //public int CompareTo(Employee other)
+        //{
+        //    //this => current object that is calling the method 
+        //    if (this.Salary > other.Salary)
+        //        return 1;
+        //    else if (this.Salary < other.Salary)
+        //        return -1;
+        //    else
+        //        return 0;
+        //}
+
+        public int CompareTo(object? obj)
+        {
+            Employee other = (Employee)obj; //unsafe casting => if obj is not of type Employee => InvalidCastException
+            
+            if (this.Salary > other.Salary)
+                return 1;
+            else if (this.Salary < other.Salary)
+                return -1;
+            else
+                return 0;
+        }
     }
 }

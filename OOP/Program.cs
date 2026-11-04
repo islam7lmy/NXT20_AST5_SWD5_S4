@@ -1,9 +1,12 @@
-﻿using FirstCode;
-using Commen;
-using OOP.PolyMorphism_Overriding;
+﻿using Commen;
 using Commen01;
+using FirstCode;
+using Microsoft.VisualBasic;
+using OOP.Abstraction;
 using OOP.Inhertiance;
 using OOP.Interfaces;
+using OOP.OperatorOverloading;
+using OOP.PolyMorphism_Overriding;
 
 namespace OOP
 {
@@ -445,44 +448,133 @@ namespace OOP
             #endregion
 
             #endregion
-
             #region Built-In Interface ICloneable
-            Interfaces.Employee emp = new Interfaces.Employee();
-            emp.Id = 10;
-            emp.Name = "Ahmed";
-            emp.Salary = 1000;
-            emp.Address = "cairo";
+            //Interfaces.Employee emp = new Interfaces.Employee();
+            //emp.Id = 10;
+            //emp.Name = "Ahmed";
+            //emp.Salary = 1000;
+            //emp.Address = "cairo";
 
-            Console.WriteLine(emp);
+            //Console.WriteLine(emp);
 
-            Interfaces.Employee emp01 = new Interfaces.Employee();
-            emp01.Id = 20;
-            emp01.Name = "ali";
-            emp01.Salary = 1500;
-            emp01.Address = "banha";
+            //Interfaces.Employee emp01 = new Interfaces.Employee();
+            //emp01.Id = 20;
+            //emp01.Name = "ali";
+            //emp01.Salary = 1500;
+            //emp01.Address = "banha";
 
-            Console.WriteLine(emp01);
-
-
-            Console.WriteLine($"emp : {emp.GetHashCode()}");
-            Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
-
-            ///apply deep copy on employee
-            Console.WriteLine("after deep copy");
-            //emp01 = emp.DeepCopy();
-            //emp01 = new Interfaces.Employee(emp); //copy constructor
-            emp01 = (Interfaces.Employee)emp.Clone();
-
-            DeepCopy(ref emp01, emp);
+            //Console.WriteLine(emp01);
 
 
-            Console.WriteLine($"emp : {emp.GetHashCode()}");
-            Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
+            //Console.WriteLine($"emp : {emp.GetHashCode()}");
+            //Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
 
-            emp01.Id = 400;
-            Console.WriteLine(emp);
-            Console.WriteLine(emp01);
+            /////apply deep copy on employee
+            //Console.WriteLine("after deep copy");
+            ////emp01 = emp.DeepCopy();
+            ////emp01 = new Interfaces.Employee(emp); //copy constructor
+            //emp01 = (Interfaces.Employee)emp.Clone();
+
+            //DeepCopy(ref emp01, emp);
+
+
+            //Console.WriteLine($"emp : {emp.GetHashCode()}");
+            //Console.WriteLine($"emp01 : {emp01.GetHashCode()}");
+
+            //emp01.Id = 400;
+            //Console.WriteLine(emp);
+            //Console.WriteLine(emp01);
             #endregion
+            #region Built-In Interface IComparable
+            //int[] arr = { 9, 8, 11, 7, 2, 3, 4, 5, 1 };
+            ////Array.Sort(arr);
+
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    for (int j = 0; j < arr.Length - i - 1; j++) //9 - 0 = 8
+            //    {
+            //        if (arr[j] > arr[j + 1])
+            //            Swap(ref arr[j], ref arr[j + 1]);
+            //    }
+            //}
+            //foreach (int item in arr)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+
+            //string[] strings = { "omr", "ahmed", "ali" };
+            //////Array.Sort(strings);
+            //Sorting(strings);
+            //for (int i = 0; i < strings.Length; i++)
+            //{
+            //    for (int j = 0; j < strings.Length - i - 1; j++)
+            //    {
+            //        //if (strings[j] > strings[j + 1])
+            //        if (string.Compare(strings[j], strings[j + 1]) > 0)
+            //            Swap(ref strings[j], ref strings[j + 1]);
+            //    }
+            //}
+
+            //foreach (string item in strings)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+
+            //Interfaces.Employee[] employees =
+            //{
+            //    new Interfaces.Employee(30,"omr",2000,"alex"),
+            //    new Interfaces.Employee(40,"amr",2500,"giza"),
+            //    new Interfaces.Employee(10,"ahmed",1000,"cairo"),
+            //    new Interfaces.Employee(20,"ali",1500,"banha"),
+            //};
+
+            //Array.Sort(employees);
+
+            //Sorting(employees);
+            //for (int i = 0; i < employees.Length; i++)
+            //{
+            //    for (int j = 0; j < employees.Length - i - 1; j++)
+            //    {
+            //        //if (employees[j] > employees[j + 1])
+            //        if (employees[j].CompareTo(employees[j + 1]) > 0)
+            //            Swap(ref employees[j], ref employees[j + 1]);
+            //    }
+            //}
+
+            //foreach (Interfaces.Employee emp in employees)
+            //{
+            //    Console.WriteLine(emp);
+            //}
+            #endregion
+            #endregion
+
+            #region Abstraction
+            //ShapeBase shape; //= new ShapeBase();
+            //shape = new Square(10);
+            //Console.WriteLine(shape.Area());
+            //Console.WriteLine(shape.Perimeter());
+            #endregion
+            #region Operator OverLoading
+            //5 + 7i => complex
+            Complex c1 = new Complex(1, 2);
+            Complex c2 = new Complex(1, 9);
+            Complex c3 = new Complex(3, 4);
+            Complex c5 = default; //refer to null
+
+            Complex c4 = c1 + c2 + c3 + c5;
+
+            Console.WriteLine(c4);
+
+            Console.WriteLine(c1++); //print c1 then incress => print => 1+2i then value => 2+3i
+            Console.WriteLine(++c1); //incress then print => 3+4i
+            Console.WriteLine(c1--); //print c1 then decress => print => 3+4i then value => 2+3i
+            Console.WriteLine(--c1); //decress then print => 1+2i
+
+
             #endregion
         }
 
@@ -593,6 +685,56 @@ namespace OOP
         {
             copyin = (T)copyfrom.Clone();
         }
+
+
+        #region Swap
+        public static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static void Swap(ref string a, ref string b)
+        {
+            string temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static void Swap(ref Interfaces.Employee a, ref Interfaces.Employee b)
+        {
+            Interfaces.Employee temp = a;
+            a = b;
+            b = temp;
+        }
+
+
+        //public static void Swap(ref IComparable a, ref IComparable b)
+        //{
+        //    IComparable temp = a;
+        //    a = b;
+        //    b = temp;
+        //}
+
+        public static void Sorting(IComparable[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr.Length - i - 1; j++) //9 - 0 = 8
+                {
+                    if (arr[j].CompareTo(arr[j + 1]) > 0)
+                    //Swap(ref arr[j], ref arr[j + 1]);
+                    {
+                        IComparable temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        #endregion
         #endregion
     }
 
