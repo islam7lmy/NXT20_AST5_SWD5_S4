@@ -558,22 +558,155 @@ namespace OOP
             //Console.WriteLine(shape.Area());
             //Console.WriteLine(shape.Perimeter());
             #endregion
+
             #region Operator OverLoading
-            //5 + 7i => complex
-            Complex c1 = new Complex(1, 2);
-            Complex c2 = new Complex(1, 9);
-            Complex c3 = new Complex(3, 4);
-            Complex c5 = default; //refer to null
+            ////5 + 7i => complex
+            //Complex c1 = new Complex(1, 2);
+            //Complex c2 = new Complex(1, 9);
+            //Complex c3 = new Complex(3, 4);
+            //Complex c5 = default; //refer to null
 
-            Complex c4 = c1 + c2 + c3 + c5;
+            //Complex c4 = c1 + c2 + c3 + c5;
 
-            Console.WriteLine(c4);
+            //Console.WriteLine(c4);
 
-            Console.WriteLine(c1++); //print c1 then incress => print => 1+2i then value => 2+3i
-            Console.WriteLine(++c1); //incress then print => 3+4i
-            Console.WriteLine(c1--); //print c1 then decress => print => 3+4i then value => 2+3i
-            Console.WriteLine(--c1); //decress then print => 1+2i
+            //Console.WriteLine(c1++); //print c1 then incress => print => 1+2i then value => 2+3i
+            //Console.WriteLine(++c1); //incress then print => 3+4i
+            //Console.WriteLine(c1--); //print c1 then decress => print => 3+4i then value => 2+3i
+            //Console.WriteLine(--c1); //decress then print => 1+2i
 
+
+            ////if (c1 > c2)
+            ////    Console.WriteLine("c1 is greater than c2");
+            ////else
+            ////    Console.WriteLine("c1 is less than c2");
+
+
+            #region Equals and GetHashcode
+            //Complex c1 = new Complex(1, 2);
+            //Complex c2 = new Complex(1, 2);
+            //Console.WriteLine(c1.GetHashCode());
+            //Console.WriteLine(c2.GetHashCode());
+            //if (c1 == c2)
+            //    Console.WriteLine("c1 is equal to c2");
+            //else
+            //    Console.WriteLine("c1 is not equal to c2");
+
+            //if (c1.Equals(c2))
+            //    Console.WriteLine("c1 is equal to c2");
+            //else
+            //    Console.WriteLine("c1 is not equal to c2");
+
+            //HashSet<Complex> complexSet = new HashSet<Complex>();
+            //complexSet.Add(c1);
+            //complexSet.Add(c2);
+            //Console.WriteLine(complexSet.Count);
+
+            ////string s1 = new string("ahmed");
+            ////string s2 = new string("ahmed");
+            ////Console.WriteLine(s1.GetHashCode());
+            ////Console.WriteLine(s2.GetHashCode());
+            ////if (s1 == s2)
+            ////    Console.WriteLine("s1 is equal to s2");
+            ////else
+            ////    Console.WriteLine("s1 is not equal to s2");
+            ////HashSet<string> stringSet = new HashSet<string>();
+            ////stringSet.Add(s1);
+            ////stringSet.Add(s2);
+            ////Console.WriteLine(stringSet.Count);
+
+            /////compare hashcode of two objects if equals => hashcode collision
+            /////compare values of Two objects using equals method
+
+
+            ////int x = 3;
+            ////int y = 3;
+            ////if(x == y)
+            ////    Console.WriteLine("x is equal to y");
+            ////else
+            ////    Console.WriteLine("x is not equal to y"); 
+            #endregion
+            #endregion
+
+            #region User-Defined Casting Operator
+            //int x = 5;
+            //double y = 10;
+            //y = x; //implicit casting
+            //y = 1.25;
+            //x = (int)y; // explicit casting
+
+            //x.Add(10);
+
+            //IntExtintions.Add(x, 10);
+
+
+            //OperatorOverloading.Employee emp = new OperatorOverloading.Employee();
+            //emp.Id = 10;
+            //emp.FirstName = "Ahmed";
+            //emp.LastName = "Ali";
+            //emp.BirthDate = new DateOnly(2000, 03, 15);
+            //emp.Salary = 3_000;
+            //emp.Address = new Address();
+            //emp.Address.Details = "el gala street";
+            //emp.Address.City = "Cairo";
+            //emp.Address.Country = "Egypt";
+
+            //OperatorOverloading.Employee emp = new OperatorOverloading.Employee()
+            //{
+            //    Id = 10,
+            //    FirstName = "Ahmed",
+            //    LastName = "Ali",
+            //    BirthDate = new DateOnly(2000, 03, 15),
+            //    Salary = 3_000,
+            //    Address = new Address()
+            //    {
+            //        Details = "el gala street",
+            //        City = "Cairo",
+            //        Country = "Egypt",
+            //    }
+            //};
+
+            //OperatorOverloading.Employee emp02 = new OperatorOverloading.Employee(emp);
+            ////emp02.Salary = 10_000;
+            ////emp02.Address.City = "banha";
+
+            //Console.WriteLine(emp.Salary);
+            //Console.WriteLine(emp.Address.City);
+
+
+            //EmployeeViewModel empview = new EmployeeViewModel();
+            ////{
+            ////    FullName = $"{emp.FirstName} {emp.LastName}",
+            ////    Age = DateTime.Now.Year - emp.BirthDate.Year,
+            ////    Address = $"{emp.Address.Details}, {emp.Address.City}, {emp.Address.Country}",
+            ////    NetSalary = emp.Salary - emp.Detuctions,
+            ////};
+
+            ////empview = new EmployeeViewModel(emp); //copy constructor
+            ////empview = emp; //implicit casting not recomended
+            ////empview = (EmployeeViewModel)emp; //explicit casting recomended
+            //empview = emp.ToEmployeeViewModel(); //Extintion method
+            //empview = EmployeeExtintions.ToEmployeeViewModel(emp);
+
+            //Console.WriteLine(empview);
+            #endregion
+
+            #region static
+
+            #endregion
+            #region Sealed
+
+            #endregion
+            #region Generics
+
+            #endregion
+            #region Delegates
+
+            #endregion
+            #region Events
+
+            #endregion
+            #region ef
 
             #endregion
         }
