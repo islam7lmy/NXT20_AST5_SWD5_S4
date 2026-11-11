@@ -7,6 +7,8 @@ using OOP.Inhertiance;
 using OOP.Interfaces;
 using OOP.OperatorOverloading;
 using OOP.PolyMorphism_Overriding;
+using OOP.Sealed;
+using OOP.Static;
 
 namespace OOP
 {
@@ -692,14 +694,105 @@ namespace OOP
             #endregion
 
             #region static
-
+            //Utility.PI = 1.2;
+            //Console.WriteLine(Utility.PI);
+            //Utility utility = new Utility();
+            //Console.WriteLine(Utility.CalcCircleArea(10));
+            //Console.WriteLine(Utility.PI);
             #endregion
-            #region Sealed
 
+            #region Sealed
+            //Sealed.Parent c = new GrandChiild();
+            //c.Salary = 5000;
+            //Console.WriteLine(c.Salary);
+            #endregion
+
+            #region Generics
+            #region Ex:01
+            #region NonGenerics
+            //int num1 = 10, num2 = 20;
+            //object obj1 = num1, obj2 = num2; // boxing
+            //Generics.Helper.Swap(ref obj1, ref obj2);
+            ////Generics.Helper.Swap(ref num1, ref num2);
+            //num1 = (int)obj1; // unboxing
+            //num2 = (int)obj2; // unboxing
+            //Console.WriteLine($"num1 : {num1} , num2 : {num2}");
+
+            //double num3 = 10.25, num4 = 20.15;
+            //object obj3 = num3, obj4 = num4;
+            //Generics.Helper.Swap(ref obj3, ref obj4);
+            ////Generics.Helper.Swap(ref num3, ref num4);
+            //num3 = (double)obj3;
+            //num4 = (double)obj4;
+            //Console.WriteLine($"num3 : {num3} , num4 : {num4}");
+
+            //string str1 = "Ahmed", str2 = "Mohmed";
+            //Generics.Helper.Swap(ref str1, ref str2);
+            //Console.WriteLine($"str1 : {str1} , str2 : {str2}");
+
+            //decimal x = 10.3m, y = 18.66m;
+            //Generics.Helper.Swap(ref x, ref y);
             #endregion
             #region Generics
+            //int num1 = 10, num2 = 20;
+            //Generics.Helper.Swap<int>(ref num1, ref num2);
+            //Console.WriteLine($"num1 : {num1} , num2 : {num2}");
+
+            //double num3 = 10.25, num4 = 20.15;
+            //Generics.Helper.Swap<double>(ref num3, ref num4);
+            //Console.WriteLine($"num3 : {num3} , num4 : {num4}");
+
+            //string str1 = "Ahmed", str2 = "Mohmed";
+            //Generics.Helper.Swap<string>(ref str1, ref str2);
+            //Console.WriteLine($"str1 : {str1} , str2 : {str2}");
+
+            //decimal x = 10.3m, y = 18.66m;
+            //Generics.Helper.Swap(ref x, ref y);
 
             #endregion
+            #endregion
+            #region Ex:02
+            //int[] numbers = { 5, 3, 2, 19, 4, 10, 1, 4 };
+            //int postion = Array.IndexOf(numbers, 4);
+            //int postion2 = Generics.Helper.SearchArray(numbers, 4);
+            //Console.WriteLine(postion);
+            //Console.WriteLine(postion2);
+
+            //Generics.Point[] points =
+            //{
+            //    new Generics.Point(0,0),
+            //    new Generics.Point(1,1),
+            //    new Generics.Point(2,2),
+            //    new Generics.Point(3,3),
+            //    new Generics.Point(4,4),
+            //    new Generics.Point(5,5)
+            //};
+
+            //int postion = Generics.Helper.SearchArray(points, new Generics.Point(4, 4));
+            //int postion2 = Array.IndexOf(points, new Generics.Point(4, 4));
+            //Console.WriteLine(postion);
+            //Console.WriteLine(postion2);
+
+            #endregion
+            #region Ex:03 [Quiz]
+            //Generics.Point[] points =
+            //{
+            //    new Generics.Point(0,0),
+            //    new Generics.Point(1,1),
+            //    new Generics.Point(2,2),
+            //    new Generics.Point(3,3),
+            //    new Generics.Point(4,4),
+            //    new Generics.Point(5,5)
+            //};
+            //Generics.Point max = Generics.Helper.GetMax(points);
+            //Console.WriteLine(max);
+
+            //int[] numbers = { 5, 3, 2, 19, 4, 10, 1, 4 };
+            //int Max = Generics.Helper.GetMax(numbers);
+            //Console.WriteLine(Max);
+            #endregion
+            #endregion
+
             #region Delegates
 
             #endregion
