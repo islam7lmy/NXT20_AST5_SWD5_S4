@@ -3,6 +3,8 @@ using Commen01;
 using FirstCode;
 using Microsoft.VisualBasic;
 using OOP.Abstraction;
+using OOP.Delegates;
+using OOP.Generics;
 using OOP.Inhertiance;
 using OOP.Interfaces;
 using OOP.OperatorOverloading;
@@ -12,10 +14,20 @@ using OOP.Static;
 
 namespace OOP
 {
+    //new Delegate (Class), the reference from this Delegate Can refer to a function or more than function [pointer to function]
+    //these function may be class-member function [static] or object-member function [non-static]
+    //but these function must have the same signature of delegate
+    //regardless function access modifier regardless naming(Return type, parameters)
+    //ref from delegate have object of delegate that has target and this target has function 
+
+    //step 0. Delegate Declare
+    public delegate int StringFuncDelegate(string str);
+
     internal class Program
     {
         static void Main(string[] args)
         {
+            #region OOP
             #region Access Modifiers
             //private
             //private protected  => inhertance
@@ -791,9 +803,78 @@ namespace OOP
             //int Max = Generics.Helper.GetMax(numbers);
             //Console.WriteLine(Max);
             #endregion
+
+            #region Constraint Quiz
+            ///DataProcessor<T> => processor(T item) => item = new T(); => item.print();
+            ///تستقبل أي Object من نوع T
+            ///تنشئ Object جديد من نفس النوع.
+            ///تطبع بياناته باستخدام Print()
+            ///تتأكد إن الـ Type بيطبق Interface اسمها IPrintable.
+            ///تشترط وجود Parameterless Constructor.
+            //Student st = default;
+            //DataProcessor<Student> processor = new DataProcessor<Student>();
+            //processor.Process(st);
+            #endregion
+            #endregion
             #endregion
 
             #region Delegates
+            ////Delegate Is a C# Language Feature
+            ////has 2 Usages:-
+            //// 1. functional programming [stratigay design pattern] => (pass function as parameter, return function, can save function into variable[address of function])
+            //// 2. Event-Driven Programming [observer design pattern]
+
+            #region Ex01
+            //////step 1. Declare ref From Delegate
+            //StringFuncDelegate reference;
+
+            //////step 2. intial the delegate reference [pointer of function]
+            /////count of upper case char in string
+            /////count of lower case char in string
+            //reference = new StringFuncDelegate(StringFunction.CountUppercase);
+            //reference = StringFunction.CountUppercase; //refeer to new object in heab and old object will be unreachable object
+            //reference += StringFunction.CountUppercase;
+            //reference += StringFunction.CountLowercase;
+            //reference += StringFunction.CountUppercase;
+            //reference += StringFunction.CountUppercase;
+            //reference -= StringFunction.CountUppercase; //stack in case of remove
+
+
+            //////step 3. use the Delegate Reference
+            ////int res = reference.Invoke("Ahmed Ali");
+            //int res = reference("Ahmed Ali"); // run function => queue [Invokation list]
+            ////[Invokation list]
+            ////upper
+            ////upper
+            ////lower
+            ////upper
+
+            //Console.WriteLine(res);
+            #endregion
+            #region Ex02
+            //// double[] numbers = { 8, 2, 7, 10, 7, 3, 5, 1, 4, 6 };
+
+            //string[] numbers = { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            ////Array.Sort(numbers); // sort asc
+            ////BubbleSort asc
+            ////SortingAlgorithm.BubbleSortAsc(numbers);
+            //SortingAlgorithm.BubbleSort(numbers, SortingType.SortAsc);
+            //foreach (var item in numbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+            ////BubbleSort desc
+            ////SortingAlgorithm.BubbleSortDesc(numbers);
+            //SortingAlgorithm.BubbleSort(numbers, SortingType.SortDesc);
+            //foreach (var item in numbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+            #endregion
+
 
             #endregion
             #region Events
@@ -804,6 +885,7 @@ namespace OOP
             #endregion
         }
 
+        #region OOP
         #region PolyMorphism OverLoading
         /// 1. datatype of parameters
         /// 2. Count number of parameters
@@ -961,6 +1043,7 @@ namespace OOP
         }
 
         #endregion
+        #endregion 
         #endregion
     }
 

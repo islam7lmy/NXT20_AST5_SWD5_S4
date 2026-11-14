@@ -62,5 +62,113 @@ namespace OOP.Generics
             return -1;
         }
         #endregion
+
+        #region EX03: GetMax
+        public static T GetMax<T>(T[] arr) where T : IComparable<T>
+        {
+            T max = arr[0];
+            foreach (T item in arr)
+            {
+                if (item.CompareTo(max) > 0)
+                    max = item;
+            }
+            return max;
+        }
+        #endregion
     }
+
+    #region Constraints
+    //T must be a reference type (class)
+    public class Repository<T> where T : class
+    {
+        public T? Data { get; set; }
+    }
+    //T must be not null
+    public class Repository02<T> where T : notnull
+    {
+        public T? Data { get; set; }
+    }
+
+    //T must be a value type (struct)
+    public class Calculater<T> where T : struct
+    {
+        public T Value { get; set; }
+    }
+
+    //T must have a parameterless constructor
+    public class Factory<T> where T : new()
+    {
+        public T CreateInstance()
+        {
+            return new T();
+        }
+    }
+
+    #region BaseClass
+    class Employee
+    {
+        public string Name { get; set; }
+    }
+
+    class Manager : Employee
+    {
+
+    }
+
+    class Developer : Employee
+    {
+
+    }
+    //T must be Employee or derived from Employee
+    class EmployeeService<T> where T : Employee
+    {
+        public void PrintEmployeeName(T emp)
+        {
+            Console.WriteLine($"Employee Name: {emp.Name}");
+        }
+    }
+
+    #endregion
+
+    class Animal { }
+    class Dog : Animal { }
+
+    class AnimalContainer<T, U> where T : U
+    {
+        public AnimalContainer(T dog)
+        {
+            U animal = dog;// This is valid because T is constrained to be a subclass of U
+        }
+    }
+
+    #endregion
+
+    #region Quiz
+    interface IPrintable
+    {
+        void Print();
+    }
+
+    class DataProcessor<T> where T : IPrintable, new()
+    {
+        public void Process(T item)
+        {
+            item = new T();
+            item.Print();
+        }
+    }
+
+    public class Student : IPrintable
+    {
+        public string Name { get; set; }
+        public Student()
+        {
+            Name = "N/A";
+        }
+        public void Print()
+        {
+            Console.WriteLine($"Student: {Name}");
+        }
+    }
+    #endregion
 }

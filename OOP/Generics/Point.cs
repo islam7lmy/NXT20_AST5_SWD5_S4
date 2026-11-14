@@ -6,15 +6,29 @@ using System.Threading.Tasks;
 
 namespace OOP.Generics
 {
-    internal class Point
+    internal class Point : IComparable<Point>
     {
-        public Point(int x , int y)
+        public Point(int x, int y)
         {
             X = x;
             Y = y;
         }
         public int X { get; set; }
         public int Y { get; set; }
+
+        public int CompareTo(Point? other)
+        {
+            if (other is null)
+                return 1;
+            if (X == other.X && Y == other.Y)
+                return 0;
+            return X.CompareTo(other.X);
+        }
+
+        //public int CompareTo(object? obj)
+        //{
+
+        //}
 
         public override bool Equals(object? obj)
         {
