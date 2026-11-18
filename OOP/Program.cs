@@ -4,6 +4,7 @@ using FirstCode;
 using Microsoft.VisualBasic;
 using OOP.Abstraction;
 using OOP.Delegates;
+using OOP.Events;
 using OOP.Generics;
 using OOP.Inhertiance;
 using OOP.Interfaces;
@@ -11,6 +12,7 @@ using OOP.OperatorOverloading;
 using OOP.PolyMorphism_Overriding;
 using OOP.Sealed;
 using OOP.Static;
+using System.Collections;
 
 namespace OOP
 {
@@ -25,6 +27,7 @@ namespace OOP
 
     internal class Program
     {
+
         static void Main(string[] args)
         {
             #region OOP
@@ -874,10 +877,183 @@ namespace OOP
             //}
             //Console.WriteLine();
             #endregion
+            #region Ex:03
+            //List<int> numbers = new List<int> { 7, 8, 10, 11, 12 }; //type safety , dynamic size
+            //ArrayList arrayList = new ArrayList { 7, 8, 10, 11, 12 , "ahmed" }; // not type safe , dynamic size
+            //int[] arr = new int[] { 7, 8, 10, 11, 12 }; //type safety , fixed size
 
+            //List<int> Numbers = Enumerable.Range(0, 101).ToList();
+            //List<int> oddnumbers = NumberFinding.FindNumbers(Numbers, NumberConditions.IsOdd);
+            //List<int> evennumbers = NumberFinding.FindNumbers(Numbers, NumberConditions.IsEven); 
+            //List<int> Bysevennumbers;
+
+
+            //List<string> Names = new List<string>() { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            //List<string> stringsover4 = NumberFinding.FindNumbers(Names, NumberConditions.Checklength4); ; //length > 4
+            //List<string> stringsover1; //length > 4
+            #endregion
+            #region BuiltIn Delegates [Predicate,func,action]
+            //delegete is c# language feature use to apply features in functional programing
+            //there are 3 built in delegete :
+
+            //1.Predicate  => takes one input parameter and returns a boolean - true or false.is a special kind of Func. It represents a method that contains a set of criteria mostly defined inside an if condition and checks whether the passed parameter meets those criteria or not.
+
+            //2.Action     => takes zero, one or more input parameters, but does not return anything.
+
+            //3.Func       => takes zero, one or more input parameters, and returns a value (with its out parameter)
+
+            #region Example - 01 => BuiltIn Predicate in NumberFinding Class 
+            //List<int> Numbers = Enumerable.Range(0, 101).ToList();
+            //Predicate<int> numberdelegate = NumberConditions.IsOdd;
+            //List<int> oddnumbers = NumberFinding.FindNumbers(Numbers, numberdelegate);
+            #endregion
+            #region  Example - 02 => BuiltIn Func in SortingAlgorithm Class
+            //string[] Names = { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            //Func<string, string, bool> Reference = SortingType.SortAsc;
+            //SortingAlgorithm.BubbleSort(Names, Reference);
+            #endregion
+            #region Example - 03 => BuiltIn Action
+            //Action action = SomeFunction.Print;
+            //action();
+
+            //Action<string> action1 = SomeFunction.Print;
+            //action1("ali");
+            #endregion
+            #endregion
+            #region  Anonymous Function
+            // Anonymous Function : c# 2.0 Feature (.net framework 2.0 [2005])
+
+            //Predicate<string> predicate;
+            ////predicate = SomeFunction.test;
+            ////predicate = /*public*/ /*static*/ /*bool*/ /*test*/ delegate (string str) { return str.Length > 1; };
+            //predicate = delegate (string str) { return str.Length > 1; };
+            //predicate("ali");
+
+            //Func<int, string> func = delegate (int str) { return str.ToString(); };
+            //Action action = delegate () { Console.WriteLine("hello"); };
+            //Action<string> action1 = delegate (string str) { Console.WriteLine($"hello {str}"); };
+            #endregion
+            #region Lambda Exprission
+            // Lambda Expression : c# 3.0 Feature (.net framework 3.5 [2007])
+            // => : this called as 'FatArrow' and Read as 'GoesTo'
+
+            //Predicate<string> predicate;
+            ////predicate = SomeFunction.test;
+            ////predicate = /*public*/ /*static*/ /*bool*/ /*test*/ delegate (string str) { return str.Length > 1; };
+            ////predicate = /*delegate (string*/ str /*)*/ => /*{ return*/ str.Length > 1; /* };*/
+            //predicate = str => str.Length > 1;
+            //predicate("ali");
+
+
+            //List<int> Numbers = Enumerable.Range(0, 101).ToList();
+            //List<int> oddnumbers = NumberFinding.FindNumbers(Numbers, n => n % 2 == 1);
+            //List<int> evennumbers = NumberFinding.FindNumbers(Numbers, n => n % 2 == 0);
+            //List<int> Bysevennumbers = NumberFinding.FindNumbers(Numbers, n => n % 7 == 0);
+
+            //Quiz Complete all other methods
 
             #endregion
+            #region New Feature in Delegate using "var" keyWord in c# 10.0 (.net 6)
+            //var keyword => implicitly typed local variable [C# 2.0] => know it's type form it's intial value
+            //var x = "test";
+            //x = 10;//not valid
+            //var x;//not valid
+
+            // in c# 10.0 Feature (.net 6) we can use [var] as delegate but [var] is from c# 2.0
+            //var hamada = (string str) => str.Length > 1;
+            //var hamada01 = (int str) => str.ToString();
+            //var hamada02 = () => Console.WriteLine("hello");
+            //var hamada03 = (string str) => Console.WriteLine($"hello {str}");
+
+            #endregion
+            #region List Method Thaat use Delegates
+            //List<int> Numbers = Enumerable.Range(0, 10).ToList();
+            ////List<int> oddnumbers = NumberFinding.FindNumbers(Numbers, n => n % 2 == 1);
+
+            //List<int> oddnumbers = Numbers.FindAll(n => n % 2 == 1);
+            //foreach (int item in oddnumbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+            //int firstodd = Numbers.Find(n => n % 2 == 1);
+            //Console.WriteLine(firstodd);
+
+            //int Lastodd = Numbers.FindLast(n => n % 2 == 1);
+            //Console.WriteLine(Lastodd);
+
+            //bool Exists = Numbers.Exists(n => n % 7 == 0);
+            //Console.WriteLine(Exists);
+
+            //bool IsAllPostive = Numbers.TrueForAll(n => n >= 0);
+            //Console.WriteLine(IsAllPostive);
+            #endregion
+            #region Method Return Method
+            //DelegateDoAction()();
+            //DelegateDoAction().Invoke();
+            //var x = DelegateDoAction();
+            //x();
+            #endregion
+            #endregion
+
             #region Events
+            // 2. Event-Driven Programming [observer design pattern]
+
+            #region Example
+            ///hase football game with Ball, Player, and Refree
+            /// Ball has location 
+            /// player run when ball locatin changed
+            /// refree look when ball location chang
+
+            ///default solution
+            ///ball has: 
+            ///1.full property location : get and in set check if new value not equal old location and if new fire players.run() method and refrees.look() method
+            ///2.list of Players
+            ///3.list of Refrees
+
+            ///defecties:
+            ///when we need to add list of Person we must change in ball class to add new list and change in set of location property to fire person.clap() method of person class
+            ///that make our code not maintainable and not applay [open closed principle] 
+
+            ///solution:
+            /// 1.
+            ///in [observer design pattern] => we will add only one list of (Isubscriber) 
+            ///and create interface of it or abstract class 
+            ///and every entity will subscribe (ball class) must inherit from it
+
+            /// 2.
+            ///in [Event] => add event to ball class [balllocationchanged] => has invokation list
+            ///spicfay the type of function that subscribe with it [Delegate]
+            ///fire event when ball location changed in setter
+            #endregion
+            Ball ball = new Ball();
+            Console.WriteLine(ball.Location);
+
+            Playeer p11 = new Playeer("p1", "t1");
+            Playeer p12 = new Playeer("p2", "t1");
+
+            Playeer p21 = new Playeer("p1", "t2");
+            Playeer p22 = new Playeer("p2", "t2");
+
+            Refree refree = new Refree("Gresha");
+
+            ball.LocationChanged += p11.Run;
+            ball.LocationChanged += p12.Run;
+            ball.LocationChanged += p21.Run;
+            ball.LocationChanged += p22.Run;
+            ball.LocationChanged += refree.Look;
+            //ball.LocationChanged = refree.Look; //not valid with event 
+
+            Console.WriteLine("Match is started");
+            //ball.LocationChanged(new Location(10,20,30));//not valid with event
+            ball.Location = new Location(10, 20, 30);
+
+            Console.WriteLine($"{p21} is Fired");
+            ball.LocationChanged -= p21.Run;
+
+            ball.Location = new Location(20, 30, 40);
+
 
             #endregion
             #region ef
@@ -1043,7 +1219,15 @@ namespace OOP
         }
 
         #endregion
-        #endregion 
+        #endregion
+        #endregion
+
+        #region Delegate
+        //public static Action DelegateDoAction()
+        //{
+        //    //return (str) => Console.WriteLine($"Hello {str}");
+        //    return () => Console.WriteLine($"Hello");
+        //}
         #endregion
     }
 

@@ -68,7 +68,23 @@ namespace OOP.Delegates
         #endregion
 
         #region Generics
-        public static void BubbleSort<T>(T[] arr, GenricsSortingTypesFuncDelegate<T> reference)
+        //public static void BubbleSort<T>(T[] arr, GenricsSortingTypesFuncDelegate<T> reference)
+        //{
+        //    if (arr is not null)
+        //        for (int i = 0; i < arr.Length - 1; i++)
+        //        {
+        //            for (int j = 0; j < arr.Length - 1 - i; j++)
+        //            {
+        //                //if (arr[j] > arr[j + 1])
+        //                //if(function return bool and take two int parameters)
+        //                if (reference(arr[j], arr[j + 1]))
+        //                    Swap(ref arr[j], ref arr[j + 1]);
+
+        //            }
+        //        }
+        //}
+
+        public static void BubbleSort<T>(T[] arr, Func<T, T, bool> reference)
         {
             if (arr is not null)
                 for (int i = 0; i < arr.Length - 1; i++)
