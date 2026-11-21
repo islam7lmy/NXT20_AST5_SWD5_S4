@@ -1027,32 +1027,32 @@ namespace OOP
             ///spicfay the type of function that subscribe with it [Delegate]
             ///fire event when ball location changed in setter
             #endregion
-            Ball ball = new Ball();
-            Console.WriteLine(ball.Location);
+            //Ball ball = new Ball();
+            //Console.WriteLine(ball.Location);
 
-            Playeer p11 = new Playeer("p1", "t1");
-            Playeer p12 = new Playeer("p2", "t1");
+            //Playeer p11 = new Playeer("p1", "t1");
+            //Playeer p12 = new Playeer("p2", "t1");
 
-            Playeer p21 = new Playeer("p1", "t2");
-            Playeer p22 = new Playeer("p2", "t2");
+            //Playeer p21 = new Playeer("p1", "t2");
+            //Playeer p22 = new Playeer("p2", "t2");
 
-            Refree refree = new Refree("Gresha");
+            //Refree refree = new Refree("Gresha");
 
-            ball.LocationChanged += p11.Run;
-            ball.LocationChanged += p12.Run;
-            ball.LocationChanged += p21.Run;
-            ball.LocationChanged += p22.Run;
-            ball.LocationChanged += refree.Look;
-            //ball.LocationChanged = refree.Look; //not valid with event 
+            //ball.LocationChanged += p11.Run;
+            //ball.LocationChanged += p12.Run;
+            //ball.LocationChanged += p21.Run;
+            //ball.LocationChanged += p22.Run;
+            //ball.LocationChanged += refree.Look;
+            ////ball.LocationChanged = refree.Look; //not valid with event 
 
-            Console.WriteLine("Match is started");
-            //ball.LocationChanged(new Location(10,20,30));//not valid with event
-            ball.Location = new Location(10, 20, 30);
+            //Console.WriteLine("Match is started");
+            ////ball.LocationChanged(new Location(10,20,30));//not valid with event
+            //ball.Location = new Location(10, 20, 30);
 
-            Console.WriteLine($"{p21} is Fired");
-            ball.LocationChanged -= p21.Run;
+            //Console.WriteLine($"{p21} is Fired");
+            //ball.LocationChanged -= p21.Run;
 
-            ball.Location = new Location(20, 30, 40);
+            //ball.Location = new Location(20, 30, 40);
 
 
             #endregion
