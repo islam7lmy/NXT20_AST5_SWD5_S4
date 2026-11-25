@@ -29,35 +29,46 @@ namespace EFCore.Entities
     #endregion
 
     #region 2. Data Annotations [set of attributes used for valdation]
-    [Table("EmployeeInfo", Schema = "dbo")]
+    //[Table("EmployeeInfo", Schema = "dbo")]
+    //internal class Employee
+    //{
+    //    [Key]
+    //    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    //    public int Code { get; set; } //primary key by convantion => identity(1,1) => not allow null
+
+    //    [Required]
+    //    [Column(TypeName = DbTypes.Varchar)] //[Column(TypeName = "nvarchar")]
+    //    [MaxLength(100)]
+    //    [StringLength(50, MinimumLength = 10)]
+    //    public string? FirstName { get; set; } //nvarchar(max) => not allow null
+
+    //    public string? LastName { get; set; } //nvarchar(max) => allow null
+
+    //    public double Salary { get; set; } // float => not allow null
+
+    //    [Range(22, 60)]
+    //    public int? Age { get; set; }  //int => allow null
+
+    //    [EmailAddress]
+    //    public string? Email { get; set; }
+
+    //    public double NetSalary { get => Salary * .9; }
+
+    //    [NotMapped]
+    //    public int Test { get; set; }
+    //}
+    #endregion
+
+    #region 3. Fluent API (set of methods to do congfigurations)
     internal class Employee
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Code { get; set; } //primary key by convantion => identity(1,1) => not allow null
-
-        [Required]
-        [Column(TypeName = DbTypes.Varchar)] //[Column(TypeName = "nvarchar")]
-        [MaxLength(100)]
-        [StringLength(50, MinimumLength = 10)]
-        public string? FirstName { get; set; } //nvarchar(max) => not allow null
-
-        public string? LastName { get; set; } //nvarchar(max) => allow null
-
-        public double Salary { get; set; } // float => not allow null
-
-        [Range(22, 60)]
-        public int? Age { get; set; }  //int => allow null
-
-        [EmailAddress]
-        public string? Email { get; set; }
-
-        public double NetSalary { get => Salary * .9; }
-
-        [NotMapped]
-        public int Test { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string? LastName { get; set; }
+        public double Salary { get; set; }
+        public int? Age { get; set; }
     }
-    #endregion
+    #endregion 
 
     static class DbTypes
     {
