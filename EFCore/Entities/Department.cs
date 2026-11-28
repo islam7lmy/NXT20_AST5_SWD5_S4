@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,5 +13,16 @@ namespace EFCore.Entities
         public string? Name { get; set; }
         public int Code { get; set; }
         public DateOnly CreationDate { get; set; }
+
+        //navigational property
+        //[InverseProperty(nameof(Employee.Department))]
+        //public ICollection<Employee> Employees { get; set; } //= new LinkedList<Employee>(); //HashSet<Employee>(); //List<Employee>();
+
+
+        //[ForeignKey(nameof(Manager))]
+        public int MangerId { get; set; }
+        //[InverseProperty(nameof(Employee.DepartmentToMange))]
+        //public Employee Manager { get; set; }
+
     }
 }

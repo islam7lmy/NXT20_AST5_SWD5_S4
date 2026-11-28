@@ -15,6 +15,8 @@ namespace EFCore.Contexts
 
         #region DBSets
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
         #endregion
 
         ///OnConfiguring => configuration Of Database Server

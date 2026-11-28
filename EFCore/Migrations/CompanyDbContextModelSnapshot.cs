@@ -22,6 +22,23 @@ namespace EFCore.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("EFCore.Entities.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Courses");
+                });
+
             modelBuilder.Entity("EFCore.Entities.Department", b =>
                 {
                     b.Property<int>("DeptId")
@@ -43,12 +60,18 @@ namespace EFCore.Migrations
                         .HasColumnType("Date")
                         .HasComputedColumnSql("GETDATE()");
 
+                    b.Property<int>("MangerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("DepartmentName");
 
                     b.HasKey("DeptId");
+
+                    b.HasIndex("MangerId")
+                        .IsUnique();
 
                     b.ToTable("DepartmentInfo", "dbo");
                 });
@@ -64,11 +87,16 @@ namespace EFCore.Migrations
                     b.Property<int?>("Age")
                         .HasColumnType("int");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
+                    b.Property<int>("DepartmentDeptId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Salary")
@@ -76,7 +104,77 @@ namespace EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees", (string)null);
+                    b.HasIndex("DepartmentDeptId");
+
+                    b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.StudentCourse", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Grade")
+                        .HasColumnType("int");
+
+                    b.HasKey("StudentId", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("StudentCourse");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Department", b =>
+                {
+                    b.HasOne("EFCore.Entities.Employee", null)
+                        .WithOne()
+                        .HasForeignKey("EFCore.Entities.Department", "MangerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Employee", b =>
+                {
+                    b.HasOne("EFCore.Entities.Department", null)
+                        .WithMany()
+                        .HasForeignKey("DepartmentDeptId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EFCore.Entities.StudentCourse", b =>
+                {
+                    b.HasOne("EFCore.Entities.Course", null)
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EFCore.Entities.Student", null)
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -13,8 +13,9 @@ namespace EFCore.Configurations
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {
+            #region Properties
             builder.ToTable("DepartmentInfo", "dbo")
-               .HasKey(d => d.DeptId);
+                   .HasKey(d => d.DeptId);
 
             builder.Property(d => d.DeptId)
             .UseIdentityColumn(10, 10);
@@ -31,6 +32,19 @@ namespace EFCore.Configurations
             builder.Property<string>("Address")
                 .HasColumnType("nvarchar(100)")
                 .HasDefaultValue("Cairo");
+            #endregion
+
+            #region RealtionShip Mapping
+            //builder.HasMany(d => d.Employees)
+            //    .WithOne(e => e.Department)
+            //    .HasForeignKey(e => e.DepartmentDeptId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+            //builder.HasOne(d => d.Manager)
+            //    .WithOne(e => e.DepartmentToMange)
+            //    .HasForeignKey<Department>(d => d.MangerId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+            #endregion
         }
     }
 }

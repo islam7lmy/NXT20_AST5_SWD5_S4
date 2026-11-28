@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20261125181853_InitialCreate")]
+    [Migration("20261128085046_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -46,12 +46,18 @@ namespace EFCore.Migrations
                         .HasColumnType("Date")
                         .HasComputedColumnSql("GETDATE()");
 
+                    b.Property<int>("MangerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("DepartmentName");
 
                     b.HasKey("DeptId");
+
+                    b.HasIndex("MangerId")
+                        .IsUnique();
 
                     b.ToTable("DepartmentInfo", "dbo");
                 });
@@ -67,11 +73,16 @@ namespace EFCore.Migrations
                     b.Property<int?>("Age")
                         .HasColumnType("int");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
+                    b.Property<int>("DepartmentDeptId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Salary")
@@ -79,7 +90,41 @@ namespace EFCore.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentDeptId");
+
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Department", b =>
+                {
+                    b.HasOne("EFCore.Entities.Employee", "Manager")
+                        .WithOne("DepartmentToMange")
+                        .HasForeignKey("EFCore.Entities.Department", "MangerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Manager");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Employee", b =>
+                {
+                    b.HasOne("EFCore.Entities.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentDeptId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Department", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("EFCore.Entities.Employee", b =>
+                {
+                    b.Navigation("DepartmentToMange");
                 });
 #pragma warning restore 612, 618
         }
